@@ -1,0 +1,9 @@
+api_login_check:
+  path: /login_check
+
+#fos_user_registration_confirm:
+#  path: /account/goConfirmEmail/{token}
+#  controller: App\Controller\AccountController::goConfirmEmail
+#fos_user_resetting_reset:
+#  path: /account/goResetPassword/{token}
+#  controller: App\Controller\AccountController::goResetPassword

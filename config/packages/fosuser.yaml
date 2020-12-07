@@ -1,0 +1,19 @@
+fos_user:
+  db_driver: orm
+  firewall_name: api
+  user_class: App\Entity\User
+  from_email:
+    address:            '%env(FOSUSER_FROM_EMAIL)%'
+    sender_name:        '%env(FOSUSER_FROM_NAME)%'
+  #  service:
+  #    mailer: fos_user.mailer.default
+  registration:
+    confirmation:
+      enabled: false
+      template:   '@FOSUser/Registration/email.txt.twig'
+  #      from_email:
+  #        address:        '%env(FOSUSER_FROM_EMAIL)%'
+  #        sender_name:    'Confirmation'
+  resetting:
+    email:
+      template: '@FOSUser/Resetting/email.txt.twig'
