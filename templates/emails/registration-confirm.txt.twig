@@ -1,0 +1,17 @@
+{# @var user \App\Entity\User #}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body_text %}
+{% autoescape false %}
+Bonjour {{ user.firstname|capitalize }} !
+
+Pour valider votre compte utilisateur, merci de vous rendre sur {{ confirmationUrl }}
+
+Ce lien ne peut être utilisé qu'une seule fois pour valider votre compte.
+
+Cordialement,
+
+L'équipe
+{% endautoescape %}
+{% endblock %}
+{% block body_html %}{% endblock %}

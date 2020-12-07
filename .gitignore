@@ -1,0 +1,55 @@
+.idea/
+/.env.test
+
+###> symfony/framework-bundle ###
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> symfony/web-server-bundle ###
+/.web-server-pid
+###< symfony/web-server-bundle ###
+
+###> friendsofphp/php-cs-fixer ###
+/.php_cs
+/.php_cs.cache
+###< friendsofphp/php-cs-fixer ###
+
+/public/upload/image/1553200376-537609388.png
+/public/upload/image/1553200516-1012799723.png
+/public/upload/image/1553200807-1620985832.png
+/public/upload/image/1553201994-996996884.png
+/public/upload/image/1553202098-991381399.png
+/public/upload/image/1553202196-1949805041.png
+/public/upload/image/1553202596-437280237.png
+/public/upload/image/1553202652-1805277847.png
+/public/upload/image/1553202732-1481279164.png
+/public/upload/image/1553203210-28988923.png
+/public/upload/image/1553203260-1290498451.png
+/public/upload/image/1553203436-1004397085.png
+/public/upload/image/1553203655-2051747551.png
+/public/upload/image/1553236278-690290934.png
+/public/upload/image/1553716677-1597315984.png
+/public/upload/image/1553716721-169273622.png
+/tests/AngularGenerator/models/Block.ts
+/tests/AngularGenerator/models/BlockAttribute.ts
+/tests/AngularGenerator/models/Coach.ts
+/tests/AngularGenerator/models/Program.ts
+/tests/AngularGenerator/models/Seance.ts
+/tests/AngularGenerator/models/Theme.ts
+/tests/AngularGenerator/models/User.ts
+/tests/AngularGenerator/models/UserHasSeance.ts
+/tests/AngularGenerator/models/UserLogin.ts
+/tests/AngularGenerator/endpoints.ts
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
+/composer.lock
+/symfony.lock
