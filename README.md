@@ -1,2 +1,0 @@
-# lero
-first commit
