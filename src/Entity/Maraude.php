@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Service\Generic\Entity\EntityBaseTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -14,14 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Maraude
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned"=true})
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
+    use EntityBaseTrait;
 
     /**
      * @var string|null
