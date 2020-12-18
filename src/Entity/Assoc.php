@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Assoc
  *
  * @ORM\Table(name="assoc", indexes={@ORM\Index(name="fk_assoc_ville", columns={"ville_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\AssocRepository")
  */
 class Assoc
 {
@@ -118,11 +118,6 @@ class Assoc
     public function __construct()
     {
         $this->ouverture = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
     }
 
     public function getNom(): ?string

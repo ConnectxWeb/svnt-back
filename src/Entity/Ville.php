@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Ville
  *
  * @ORM\Table(name="ville")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\VilleRepository")
  */
 class Ville
 {
@@ -21,11 +21,6 @@ class Ville
      * @ORM\Column(name="nom", type="string", length=64, nullable=true)
      */
     private $nom;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getNom(): ?string
     {

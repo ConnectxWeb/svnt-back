@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Maraude
  *
  * @ORM\Table(name="maraude", indexes={@ORM\Index(name="fk_assoc_copy1_assoc1", columns={"assoc_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\MaraudeRepository")
  */
 class Maraude
 {
@@ -97,11 +97,6 @@ class Maraude
     public function __construct()
     {
         $this->ouverture = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
     }
 
     public function getNom(): ?string

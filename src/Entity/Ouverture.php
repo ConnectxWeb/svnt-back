@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Ouverture
  *
  * @ORM\Table(name="ouverture")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\OuvertureRepository")
  */
 class Ouverture
 {
@@ -59,11 +59,6 @@ class Ouverture
     {
         $this->assoc = new \Doctrine\Common\Collections\ArrayCollection();
         $this->maraude = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
     }
 
     public function getJourIndex(): ?bool
