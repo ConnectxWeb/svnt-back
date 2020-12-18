@@ -53,3 +53,4 @@
 ###< lexik/jwt-authentication-bundle ###
 /composer.lock
 /symfony.lock
+/.php_cs.dist
