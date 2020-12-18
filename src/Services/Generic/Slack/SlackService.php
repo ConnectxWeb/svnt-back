@@ -7,7 +7,7 @@ namespace App\Service\Generic\Slack;
 use App\Service\Generic\Symfony\SymfonyUtils;
 use App\Service\Generic\Type\BootstrapType;
 use Http\Client\Exception;
-use Nexy\Slack\Client;
+use Nexy\Slack\Client; //composer require nexylan/slack
 use Throwable;
 
 class SlackService
@@ -47,7 +47,7 @@ class SlackService
         if (SymfonyUtils::isDev()) {
             return;
         }
-        
+
         $msg = sprintf(
             "%s *Exception raised*\n %s\n```File: %s\nLine: %s\nCode: %s```\n```%s```",
             $this->bootstrapTypeToIcon(BootstrapType::WARNING),
