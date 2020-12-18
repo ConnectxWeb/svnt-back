@@ -25,8 +25,6 @@
 
 namespace App\Tests;
 
-use App\Entity\Block;
-use App\Services\AngularGenerator;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\ToolsException;
 use Liip\FunctionalTestBundle\Test\WebTestCase;
@@ -39,8 +37,8 @@ use Symfony\Component\BrowserKit\Client;
 class AllTest extends WebTestCase
 {
     const DELETE_TESTS = false;
-    const DROP_DB = true;
-    const PROCESS_FIXTURE = true;
+    const DROP_DB = false;
+    const PROCESS_FIXTURE = false;
 
     /**
      * @var Client

@@ -6,7 +6,7 @@
 namespace App\Service\Generic\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Mapping\Annotation as Gedmo; //needed
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 trait EntityBaseTrait
