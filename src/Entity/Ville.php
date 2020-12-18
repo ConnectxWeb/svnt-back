@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Services\Generic\Entity\EntityBaseTrait;
+use App\Service\Generic\Entity\EntityBaseTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

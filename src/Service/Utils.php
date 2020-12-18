@@ -23,30 +23,19 @@
  * THE SOFTWARE.
  */
 
-namespace App\Controller;
+namespace App\Service;
 
-use App\Service\UploadImage;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
 
-class UploadImageController extends AbstractController
+class Utils
 {
-
-    private $uploadImage;
-
-    public function __construct(UploadImage $uploadImage)
+    public static function generateJsonResponse(bool $success, string $msg, int $code): JsonResponse
     {
-        $this->uploadImage = $uploadImage;
-    }
-
-    /**
-     * @Route("/upload/img", name="upload_image")
-     */
-    public function uploadImage(Request $request): JsonResponse
-    {
-        $baseUrl = sprintf('%s://%s', $request->server->get('REQUEST_SCHEME'), $request->server->get('SERVER_NAME'));
-        return $this->uploadImage->uploadImage($baseUrl);
+        return new JsonResponse([
+            'success' => $success,
+            'code' => $code,
+            'message' => $msg,
+        ]);
     }
 }

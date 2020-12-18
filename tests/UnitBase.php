@@ -25,7 +25,7 @@
 
 namespace App\Tests;
 
-use App\Services\RepoService;
+use App\Service\RepoService;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker; //composer require fzaninotto/faker
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
@@ -50,7 +50,7 @@ class UnitBase extends WebTestCase
      */
     protected $client;
     /**
-     * @var \App\Services\RepoService
+     * @var \App\Service\RepoService
      */
     protected $repoService;
 
