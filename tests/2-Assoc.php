@@ -28,10 +28,28 @@ namespace App\Tests;
 
 use App\Entity\Assoc;
 use App\Entity\Ouverture;
-use App\Entity\Ville;
 
 class AssocTest extends UnitBase
 {
+    const DELETE_ALL = true;
+
+    public function testDelete()
+    {
+        if (!self::DELETE_ALL) {
+            $this->assertTrue(true);
+
+            return;
+        }
+
+        $assocs = $this->repoService->getAssocRepository()->findAll();
+        foreach ($assocs as $assoc) {
+            $this->pushMessage(sprintf('Delete assoc: %s', $assoc->getNom()));
+            $this->entityManager->remove($assoc);
+        }
+        $this->entityManager->flush();
+        $this->assertTrue(true);
+    }
+
     public function testAddAssocs()
     {
         for ($i = 1; $i <= 5; $i++) {
@@ -93,8 +111,16 @@ class AssocTest extends UnitBase
     {
         $ouverture = new Ouverture();
         $ouverture->setJourIndex($this->faker->numberBetween(1, 7));
-        $ouverture->setHeureDebut($this->faker->time());
-        $ouverture->setHeureFin($this->faker->time());
+
+        $debut = new \DateTime();
+        $debut->setTime($this->faker->numberBetween(0, 24), $this->faker->numberBetween(0, 60));
+        $ouverture->setHeureDebut($debut);
+
+        $fin = new \DateTime();
+        $fin->setTime($this->faker->numberBetween(0, 24), $this->faker->numberBetween(0, 60));
+        $ouverture->setHeureFin($fin);
+
+        $this->entityManager->persist($ouverture);
         $assoc->addOuverture($ouverture);
     }
 }

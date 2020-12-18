@@ -18,9 +18,9 @@ class Ouverture
     use EntityBaseTrait;
 
     /**
-     * @var bool|null
+     * @var integer|null
      *
-     * @ORM\Column(name="jour_index", type="boolean", nullable=false)
+     * @ORM\Column(name="jour_index", type="smallint", nullable=false)
      */
     private $jourIndex;
 
@@ -41,14 +41,14 @@ class Ouverture
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Assoc", mappedBy="ouverture")
+     * @ORM\ManyToMany(targetEntity="Assoc", mappedBy="ouverture", orphanRemoval=true, cascade={"persist"})
      */
     private $assoc;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Maraude", mappedBy="ouverture")
+     * @ORM\ManyToMany(targetEntity="Maraude", mappedBy="ouverture", orphanRemoval=true, cascade={"persist"})
      */
     private $maraude;
 

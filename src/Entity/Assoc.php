@@ -98,13 +98,13 @@ class Assoc
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Ouverture", inversedBy="assoc")
+     * @ORM\ManyToMany(targetEntity="Ouverture", inversedBy="assoc", cascade={"remove"})
      * @ORM\JoinTable(name="assoc_has_ouverture",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="assoc_id", referencedColumnName="id")
+     *     @ORM\JoinColumn(name="assoc_id", referencedColumnName="id", onDelete="CASCADE")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="ouverture_id", referencedColumnName="id")
+     *     @ORM\JoinColumn(name="ouverture_id", referencedColumnName="id", onDelete="CASCADE")
      *   }
      * )
      */

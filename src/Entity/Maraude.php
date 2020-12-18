@@ -80,10 +80,10 @@ class Maraude
      * @ORM\ManyToMany(targetEntity="Ouverture", inversedBy="maraude")
      * @ORM\JoinTable(name="maraude_has_ouverture",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="maraude_id", referencedColumnName="id")
+     *     @ORM\JoinColumn(name="maraude_id", referencedColumnName="id", onDelete="CASCADE")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="ouverture_id", referencedColumnName="id")
+     *     @ORM\JoinColumn(name="ouverture_id", referencedColumnName="id", onDelete="CASCADE")
      *   }
      * )
      */
