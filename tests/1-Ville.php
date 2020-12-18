@@ -7,7 +7,7 @@ use App\Entity\Ville;
 
 class VilleTest extends UnitBase
 {
-    public function testAddVille()
+    public function testAddVilles()
     {
         $this->addVille("Toulouse");
         $this->addVille("Montpellier");

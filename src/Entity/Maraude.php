@@ -70,9 +70,7 @@ class Maraude
      * @var \Assoc
      *
      * @ORM\ManyToOne(targetEntity="Assoc")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="assoc_id", referencedColumnName="id")
-     * })
+     * @ORM\JoinColumn(name="assoc_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      */
     private $assoc;
 

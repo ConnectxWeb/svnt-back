@@ -91,9 +91,7 @@ class Assoc
      * @var \Ville
      *
      * @ORM\ManyToOne(targetEntity="Ville")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ville_id", referencedColumnName="id")
-     * })
+     * @ORM\JoinColumn(name="ville_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      */
     private $ville;
 

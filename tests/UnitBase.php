@@ -62,7 +62,7 @@ class UnitBase extends WebTestCase
             ->get('doctrine')
             ->getManager();
 
-        $this->faker = Faker\Factory::create('en_US');
+        $this->faker = Faker\Factory::create('fr_FR');
 
         $this->repoService = self::$container->get(RepoService::class); //dont forget to declare it public in service.yaml
     }

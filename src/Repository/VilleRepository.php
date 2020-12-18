@@ -47,4 +47,10 @@ class VilleRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findRandomVille(): ?Ville
+    {
+        $all = $this->findAll();
+
+        return $all[array_rand($all)];
+    }
 }
