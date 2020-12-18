@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Service\Generic\FosUser;
+namespace App\Services\Generic\FosUser;
 
 
 use FOS\UserBundle\Model\UserManagerInterface;

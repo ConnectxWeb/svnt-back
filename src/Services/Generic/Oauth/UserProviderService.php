@@ -1,11 +1,11 @@
 <?php
 
 
-namespace App\Service\Generic\Oauth;
+namespace App\Services\Generic\Oauth;
 
 
 use App\Entity\User;
-use App\Service\Generic\Guzzle\GuzzleService;
+use App\Services\Generic\Guzzle\GuzzleService;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface; //composer require hwi/oauth-bundle php-http/guzzle6-adapter php-http/httplug-bundle
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
 use Symfony\Component\HttpFoundation\File\UploadedFile;

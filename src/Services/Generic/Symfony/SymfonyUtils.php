@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Service\Generic\Symfony;
+namespace App\Services\Generic\Symfony;
 
 
 class SymfonyUtils

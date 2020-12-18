@@ -5,10 +5,12 @@
         "php": "^7.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-intl": "*",
         "ext-json": "*",
         "api-platform/core": "2.3.6",
         "doctrine/annotations": "^1.6",
         "friendsofsymfony/user-bundle": "2.1.2",
+        "fzaninotto/faker": "^1.9",
         "guzzlehttp/guzzle": "^7.0",
         "html2text/html2text": "^4.3",
         "lexik/jwt-authentication-bundle": "^2.6",
@@ -39,8 +41,7 @@
         "symfony/validator": "4.4.*",
         "symfony/web-link": "4.4.*",
         "symfony/yaml": "4.4.*",
-        "webonyx/graphql-php": "^0.13.0",
-      "ext-intl": "*"
+        "webonyx/graphql-php": "^0.13.0"
     },
     "require-dev": {
         "api-platform/schema-generator": "^2.1",

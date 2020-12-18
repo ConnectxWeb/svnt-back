@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  */
 
-namespace App\Service\Generic\Api;
+namespace App\Services\Generic\Api;
 
 
 use Symfony\Component\HttpClient\HttpClient; //symfony >= 4.3 -  composer require symfony/http-client

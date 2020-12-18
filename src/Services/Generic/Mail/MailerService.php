@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Service\Generic\Mail;
+namespace App\Services\Generic\Mail;
 
 
 use Html2Text\Html2Text; //composer require html2text/html2text
@@ -43,8 +43,7 @@ class MailerService
         $htmlPart = null,
         $txtPart = null,
         $autoAddTxtPart = true
-    )
-    {
+    ) {
         if ($htmlPart === null && $txtPart === null) {
             $this->lastError = 'HTML and text part empty.';
             return false;

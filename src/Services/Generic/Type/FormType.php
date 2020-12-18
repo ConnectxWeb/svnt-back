@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Service\Generic\Type;
+namespace App\Services\Generic\Type;
 
 
 class FormType

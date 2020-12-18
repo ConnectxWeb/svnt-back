@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\Service\Generic\Upload;
+namespace App\Services\Generic\Upload;
 
 
-use App\Service\Generic\Log\LoggerService;
+use App\Services\Generic\Log\LoggerService;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -36,7 +36,7 @@ class UploadService
 
         $guessExtension = $file->guessExtension();
         $ext = !$guessExtension ? 'bin' : $guessExtension;
-        $fileName = $safeFilename.'-'.uniqid().'.'.$ext;
+        $fileName = $safeFilename . '-' . uniqid() . '.' . $ext;
 
         try {
             $file->move($targetDirectory, $fileName);

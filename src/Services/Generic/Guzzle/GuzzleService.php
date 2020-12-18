@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Service\Generic\Guzzle;
+namespace App\Services\Generic\Guzzle;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;

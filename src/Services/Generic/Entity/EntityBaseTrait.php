@@ -3,7 +3,7 @@
  * dont forgot to add gedmo.listener.timestampable listener in service.yaml
  */
 
-namespace App\Service\Generic\Entity;
+namespace App\Services\Generic\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo; //needed

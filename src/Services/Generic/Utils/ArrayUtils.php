@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Service\Generic\Utils;
+namespace App\Services\Generic\Utils;
 
 
 class ArrayUtils

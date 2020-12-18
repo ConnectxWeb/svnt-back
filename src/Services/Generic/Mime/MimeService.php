@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Service\Generic\Mime;
+namespace App\Services\Generic\Mime;
 
 
 class MimeService

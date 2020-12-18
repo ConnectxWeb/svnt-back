@@ -1,11 +1,11 @@
 <?php
 
 
-namespace App\Service\Generic\Slack;
+namespace App\Services\Generic\Slack;
 
 
-use App\Service\Generic\Symfony\SymfonyUtils;
-use App\Service\Generic\Type\BootstrapType;
+use App\Services\Generic\Symfony\SymfonyUtils;
+use App\Services\Generic\Type\BootstrapType;
 use Http\Client\Exception;
 use Nexy\Slack\Client; //composer require nexylan/slack
 use Throwable;

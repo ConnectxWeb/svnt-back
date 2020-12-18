@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Service\Generic\Flash;
+namespace App\Services\Generic\Flash;
 
-use App\Service\Generic\Type\BootstrapType;
-use App\Service\Generic\Utils\StringUtils;
+use App\Services\Generic\Type\BootstrapType;
+use App\Services\Generic\Utils\StringUtils;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class FlashMsg

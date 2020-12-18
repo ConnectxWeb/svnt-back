@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Service\Generic\Log;
+namespace App\Services\Generic\Log;
 
-use App\Service\Generic\Flash\FlashMsg;
-use App\Service\Generic\Mail\MailerService;
-use App\Service\Generic\Slack\SlackService;
-use App\Service\Generic\Type\BootstrapType;
+use App\Services\Generic\Flash\FlashMsg;
+use App\Services\Generic\Mail\MailerService;
+use App\Services\Generic\Slack\SlackService;
+use App\Services\Generic\Type\BootstrapType;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 use Symfony\Component\HttpFoundation\Request;
