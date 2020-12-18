@@ -41,3 +41,6 @@ services:
   App\EventListener\UpdatePriority:
     tags:
       - { name: doctrine.event_listener, event: postPersist }
+
+  App\Services\RepoService: #for testCase
+    public: true
