@@ -20,7 +20,7 @@ class Maraude
     /**
      * @var string|null
      *
-     * @ORM\Column(name="nom", type="string", length=128, nullable=true)
+     * @ORM\Column(name="nom", type="string", length=128, nullable=false, unique=true)
      */
     private $nom;
 
@@ -34,7 +34,7 @@ class Maraude
     /**
      * @var string|null
      *
-     * @ORM\Column(name="adresse", type="string", length=255, nullable=true)
+     * @ORM\Column(name="adresse", type="string", length=255, nullable=false)
      */
     private $adresse;
 

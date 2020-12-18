@@ -27,6 +27,7 @@ namespace App\Tests;
 
 
 use App\Entity\Assoc;
+use App\Entity\Ouverture;
 use App\Entity\Ville;
 
 class AssocTest extends UnitBase
@@ -78,9 +79,22 @@ class AssocTest extends UnitBase
         $assoc->setChien($chien);
         $assoc->setHandicap($handicap);
 
+        for ($i = 1; $i <= $this->faker->numberBetween(1, 10); $i++) {
+            $this->addOuverture($assoc);
+        }
+
         $this->entityManager->persist($assoc);
         $this->pushMessage(sprintf('Assoc "%s" added.', $nom));
 
         return true;
+    }
+
+    private function addOuverture(Assoc $assoc)
+    {
+        $ouverture = new Ouverture();
+        $ouverture->setJourIndex($this->faker->numberBetween(1, 7));
+        $ouverture->setHeureDebut($this->faker->time());
+        $ouverture->setHeureFin($this->faker->time());
+        $assoc->addOuverture($ouverture);
     }
 }

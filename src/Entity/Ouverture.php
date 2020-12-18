@@ -20,21 +20,21 @@ class Ouverture
     /**
      * @var bool|null
      *
-     * @ORM\Column(name="jour_index", type="boolean", nullable=true)
+     * @ORM\Column(name="jour_index", type="boolean", nullable=false)
      */
     private $jourIndex;
 
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="heure_debut", type="time", nullable=true)
+     * @ORM\Column(name="heure_debut", type="time", nullable=false)
      */
     private $heureDebut;
 
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="heure_fin", type="time", nullable=true)
+     * @ORM\Column(name="heure_fin", type="time", nullable=false)
      */
     private $heureFin;
 

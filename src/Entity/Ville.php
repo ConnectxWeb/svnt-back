@@ -18,7 +18,7 @@ class Ville
     /**
      * @var string|null
      *
-     * @ORM\Column(name="nom", type="string", length=64, nullable=true)
+     * @ORM\Column(name="nom", type="string", length=64, nullable=true, unique=true)
      */
     private $nom;
 
