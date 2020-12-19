@@ -9,6 +9,7 @@
         "ext-json": "*",
         "api-platform/core": "2.3.6",
         "doctrine/annotations": "^1.6",
+        "easycorp/easyadmin-bundle": "^3.1",
         "friendsofsymfony/user-bundle": "2.1.2",
         "fzaninotto/faker": "^1.9",
         "guzzlehttp/guzzle": "^7.0",

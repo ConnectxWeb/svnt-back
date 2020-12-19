@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Service\Generic\Entity\EntityBaseTrait;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -18,7 +17,7 @@ class Ouverture
     use EntityBaseTrait;
 
     /**
-     * @var integer|null
+     * @var int|null
      *
      * @ORM\Column(name="jour_index", type="smallint", nullable=false)
      */
@@ -61,12 +60,12 @@ class Ouverture
         $this->maraude = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    public function getJourIndex(): ?bool
+    public function getJourIndex(): ?int
     {
         return $this->jourIndex;
     }
 
-    public function setJourIndex(?bool $jourIndex): self
+    public function setJourIndex(?int $jourIndex): self
     {
         $this->jourIndex = $jourIndex;
 
