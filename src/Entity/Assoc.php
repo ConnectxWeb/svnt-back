@@ -20,7 +20,7 @@ class Assoc
     /**
      * @var string|null
      *
-     * @ORM\Column(name="nom", type="string", length=128, nullable=true, unique=true)
+     * @ORM\Column(name="nom", type="string", length=128, nullable=false, unique=true)
      */
     private $nom;
 

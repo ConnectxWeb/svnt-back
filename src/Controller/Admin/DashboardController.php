@@ -22,15 +22,14 @@ class DashboardController extends AbstractDashboardController
     {
         // redirect to some CRUD controller
         $routeBuilder = $this->get(CrudUrlGenerator::class)->build();
-
-        return $this->redirect($routeBuilder->setController(VilleCrudController::class)->generateUrl());
+        return $this->redirect($routeBuilder->setController(AssocCrudController::class)->generateUrl());
 //        return parent::index();
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Back')
+            ->setTitle('Admin')
             // set this option if you prefer the page content to span the entire
             // browser width, instead of the default design which sets a max width
             ->renderContentMaximized();
