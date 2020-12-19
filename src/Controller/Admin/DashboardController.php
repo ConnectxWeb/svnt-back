@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Assoc;
 use App\Entity\Maraude;
 use App\Entity\Ouverture;
+use App\Entity\User;
 use App\Entity\Ville;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -42,12 +43,13 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Assoc', 'fas fa-list', Assoc::class);
         yield MenuItem::linkToCrud('Maraude', 'fas fa-list', Maraude::class);
         yield MenuItem::linkToCrud('Ouverture', 'fas fa-list', Ouverture::class);
+        yield MenuItem::linkToCrud('User', 'fas fa-list', User::class);
 
         yield MenuItem::section('User');
         if ($this->getUser() !== null) {
             yield MenuItem::linkToLogout('Logout', 'fa fa-sign-out');
         } else {
-            yield MenuItem::linktoRoute('Login', 'fa fa-id-card', 'login');
+            yield MenuItem::linktoRoute('Login', 'fa fa-id-card', 'fos_user_security_login');
         }
     }
 }
