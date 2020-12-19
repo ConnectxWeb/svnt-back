@@ -25,6 +25,7 @@
 
 namespace App\Tests;
 
+use App\Entity\Ouverture;
 use App\Service\RepoService;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker; //composer require fzaninotto/faker
@@ -83,6 +84,22 @@ class UnitBase extends WebTestCase
 
     /////////////////////////////////////
 
+    public function addOuverture()
+    {
+        $ouverture = new Ouverture();
+        $ouverture->setJourIndex($this->faker->numberBetween(1, 7));
 
+        $debut = new \DateTime();
+        $debut->setTime($this->faker->numberBetween(0, 24), $this->faker->numberBetween(0, 60));
+        $ouverture->setHeureDebut($debut);
+
+        $fin = new \DateTime();
+        $fin->setTime($this->faker->numberBetween(0, 24), $this->faker->numberBetween(0, 60));
+        $ouverture->setHeureFin($fin);
+
+        $this->entityManager->persist($ouverture);
+
+        return $ouverture;
+    }
 }
 

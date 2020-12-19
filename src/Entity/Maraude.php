@@ -34,6 +34,13 @@ class Maraude
     /**
      * @var string|null
      *
+     * @ORM\Column(name="telephone", type="string", length=32, nullable=true)
+     */
+    private $telephone;
+
+    /**
+     * @var string|null
+     *
      * @ORM\Column(name="adresse", type="string", length=255, nullable=false)
      */
     private $adresse;
@@ -215,6 +222,22 @@ class Maraude
         $this->ouverture->removeElement($ouverture);
 
         return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * @param string|null $telephone
+     */
+    public function setTelephone(?string $telephone): void
+    {
+        $this->telephone = $telephone;
     }
 
 }

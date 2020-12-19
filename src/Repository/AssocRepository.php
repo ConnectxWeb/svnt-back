@@ -47,4 +47,10 @@ class AssocRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findRandomAssoc(): ?Assoc
+    {
+        $all = $this->findAll();
+
+        return $all[array_rand($all)];
+    }
 }
