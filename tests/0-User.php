@@ -23,34 +23,43 @@
  * THE SOFTWARE.
  */
 
-namespace App\EventListener;
+namespace App\Tests;
 
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
-class LoginListener
+use App\Entity\User;
+
+class UserTest extends UnitBase
 {
-    private $em;
-
-    public function __construct(EntityManagerInterface $em)
+    public function testAddUsers()
     {
-        $this->em = $em;
+        $this->addUser("admin", "admin", "info@connectx.fr", ['ROLE_ADMIN']);
+
+        $this->entityManager->flush();
+        $this->entityManager->close();
+
+        $this->assertTrue(true);
     }
 
-    public function onSecurityInteractiveLogin(InteractiveLoginEvent $event)
-    {
-        //warning: dont inject the last login in the FosUser table it is already done in the inherited event
+    //////////////////////////////////////////////////////////////////
 
-//        /** @var User $user */
-//        $user = $event->getAuthenticationToken()->getUser();
-//        //Inject login dateTime in UserLogin
-//        $user_login = new UserLogin();
-//        $user_login->setUser($user);
-//        try {
-//            $user_login->setCreatedAt(new \DateTime());
-//        } catch (\Exception $e) {
-//        }
-//        $this->em->persist($user_login);
-//        $this->em->flush();
+    private function addUser(string $userName, string $pwd, string $email, array $roles)
+    {
+        $v = $this->repoService->getUserRepository()->findBy(['username' => $userName]);
+        if (count($v) > 0) {
+            $this->pushMessage(sprintf('User "%s" already added.', $userName));
+            return true;
+        }
+
+        $user = new User();
+        $user->setUsername($userName);
+        $user->setPlainPassword($pwd);
+        $user->setEnabled(true);
+        $user->setEmail($email);
+        $user->setRoles($roles);
+        $this->entityManager->persist($user);
+
+        $this->pushMessage(sprintf('User "%s" added.', $userName));
+
+        return true;
     }
 }

@@ -29,6 +29,7 @@ namespace App\Service;
 use App\Repository\AssocRepository;
 use App\Repository\MaraudeRepository;
 use App\Repository\OuvertureRepository;
+use App\Repository\UserRepository;
 use App\Repository\VilleRepository;
 
 class RepoService
@@ -49,17 +50,23 @@ class RepoService
      * @var OuvertureRepository
      */
     private $ouvertureRepository;
+    /**
+     * @var UserRepository
+     */
+    private $userRepository;
 
     public function __construct(
         AssocRepository $assocRepository,
         MaraudeRepository $maraudeRepository,
         OuvertureRepository $ouvertureRepository,
-        VilleRepository $villeRepository
+        VilleRepository $villeRepository,
+        UserRepository $userRepository
     ) {
         $this->assocRepository = $assocRepository;
         $this->maraudeRepository = $maraudeRepository;
         $this->ouvertureRepository = $ouvertureRepository;
         $this->villeRepository = $villeRepository;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -92,5 +99,13 @@ class RepoService
     public function getOuvertureRepository(): OuvertureRepository
     {
         return $this->ouvertureRepository;
+    }
+
+    /**
+     * @return UserRepository
+     */
+    public function getUserRepository(): UserRepository
+    {
+        return $this->userRepository;
     }
 }

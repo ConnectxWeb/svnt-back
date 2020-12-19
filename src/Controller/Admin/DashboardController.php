@@ -40,10 +40,15 @@ class DashboardController extends AbstractDashboardController
     {
 //        yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Ville', 'fas fa-list', Ville::class);
-
-//        yield MenuItem::section('Association');
         yield MenuItem::linkToCrud('Assoc', 'fas fa-list', Assoc::class);
         yield MenuItem::linkToCrud('Maraude', 'fas fa-list', Maraude::class);
         yield MenuItem::linkToCrud('Ouverture', 'fas fa-list', Ouverture::class);
+
+        yield MenuItem::section('User');
+        if ($this->getUser() !== null) {
+            yield MenuItem::linkToLogout('Logout', 'fa fa-sign-out');
+        } else {
+            yield MenuItem::linktoRoute('Login', 'fa fa-id-card', 'login');
+        }
     }
 }
