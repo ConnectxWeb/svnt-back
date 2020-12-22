@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -29,13 +30,19 @@ class AssocCrudController extends AbstractCrudController
             TextField::new('nom'),
             TextEditorField::new('description'),
             TelephoneField::new('telephone'),
-            TextField::new('adresse'),
+
+            FormField::addPanel('Adresse'),
+            TextField::new('adresse')->setCssClass('toto')->addCssClass('map-input'),
             TextField::new('longitude'),
             TextField::new('latitude'),
+
+            FormField::addPanel('Options'),
             BooleanField::new('homme'),
             BooleanField::new('femme'),
             BooleanField::new('chien'),
             BooleanField::new('handicap'),
+
+            FormField::addPanel('Horaires'),
             CollectionField::new('ouverture')
                 ->allowAdd()
                 ->allowDelete()

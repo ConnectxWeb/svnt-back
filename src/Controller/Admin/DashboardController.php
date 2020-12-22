@@ -7,6 +7,7 @@ use App\Entity\Maraude;
 use App\Entity\Ouverture;
 use App\Entity\User;
 use App\Entity\Ville;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -51,5 +52,11 @@ class DashboardController extends AbstractDashboardController
         } else {
             yield MenuItem::linktoRoute('Login', 'fa fa-id-card', 'fos_user_security_login');
         }
+    }
+
+    public function configureAssets(): Assets
+    {
+        $assets = Assets::new()->addJsFile('https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA4CDlFCYEsHZPQ2G4FWI8Hypt0QGKWn8I');
+        return $assets->addJsFile('js/location-google-autocomplete.js');
     }
 }
