@@ -76,7 +76,7 @@ class Maraude
     /**
      * @var \Assoc
      *
-     * @ORM\ManyToOne(targetEntity="Assoc")
+     * @ORM\ManyToOne(targetEntity="Assoc", cascade={"persist"})
      * @ORM\JoinColumn(name="assoc_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      */
     private $assoc;

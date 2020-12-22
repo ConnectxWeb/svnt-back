@@ -90,7 +90,7 @@ class Assoc
     /**
      * @var \Ville
      *
-     * @ORM\ManyToOne(targetEntity="Ville")
+     * @ORM\ManyToOne(targetEntity="Ville", cascade={"persist"})
      * @ORM\JoinColumn(name="ville_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      */
     private $ville;
