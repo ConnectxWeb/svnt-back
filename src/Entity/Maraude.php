@@ -84,7 +84,7 @@ class Maraude
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Ouverture", inversedBy="maraude")
+     * @ORM\ManyToMany(targetEntity="Ouverture", inversedBy="maraude", cascade={"persist", "remove"})
      * @ORM\JoinTable(name="maraude_has_ouverture",
      *   joinColumns={
      *     @ORM\JoinColumn(name="maraude_id", referencedColumnName="id", onDelete="CASCADE")

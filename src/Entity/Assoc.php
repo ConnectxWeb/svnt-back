@@ -118,6 +118,11 @@ class Assoc
         $this->ouverture = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->nom;
+    }
+
     public function getNom(): ?string
     {
         return $this->nom;
