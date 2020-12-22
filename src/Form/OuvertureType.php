@@ -1,5 +1,6 @@
 <?php
 
+namespace App\Form;
 
 use App\Entity\Ouverture;
 use Symfony\Component\Form\AbstractType;

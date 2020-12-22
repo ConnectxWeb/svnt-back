@@ -98,7 +98,7 @@ class Assoc
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Ouverture", inversedBy="assoc", cascade={"remove"})
+     * @ORM\ManyToMany(targetEntity="Ouverture", inversedBy="assoc", cascade={"persist", "remove"})
      * @ORM\JoinTable(name="assoc_has_ouverture",
      *   joinColumns={
      *     @ORM\JoinColumn(name="assoc_id", referencedColumnName="id", onDelete="CASCADE")

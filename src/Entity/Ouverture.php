@@ -60,10 +60,10 @@ class Ouverture
         $this->maraude = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    public function __toString()
-    {
-        return sprintf('%s', $this->getJourIndex());
-    }
+//    public function __toString()
+//    {
+//        return sprintf('Jour %s', $this->getJourIndex());
+//    }
 
     public function getJourIndex(): ?int
     {
