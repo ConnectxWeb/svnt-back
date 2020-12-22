@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Service\Generic\Entity\EntityBaseTrait;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Ouverture
@@ -20,6 +22,11 @@ class Ouverture
      * @var int|null
      *
      * @ORM\Column(name="jour_index", type="smallint", nullable=false)
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 7,
+     *      notInRangeMessage = "Le jour de la semaine doit être copris entre {{ min }} et {{ max }}.",
+     * )
      */
     private $jourIndex;
 
