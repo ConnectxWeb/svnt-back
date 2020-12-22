@@ -44,13 +44,12 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ApiResource(
  *     attributes={
  *      "force_eager"=false,
- *      "normalization_context"={"groups"={"user_read"}, "enable_max_depth"=true},
- *      "denormalization_context"={"groups"={"user_write"}}
+ *      "normalization_context"={"groups"={"user:read"}, "enable_max_depth"=true},
+ *      "denormalization_context"={"groups"={"user:write"}}
  *     }
  * )
  * @ApiFilter(SearchFilter::class, properties={"email": "exact"})
  * @ApiFilter(BooleanFilter::class, properties={"enabled"})
- * @ApiFilter(OrderFilter::class, properties={"id"}, arguments={"orderParameterName"="order"})
  *
  * @UniqueEntity(
  *     fields= {"username", "email"},
@@ -74,35 +73,34 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      *
      * @ApiProperty(identifier=true)
-     * @Groups({"user_read", "seance_read"})
+     * @Groups({"user:read"})
      */
     protected $id;
 
     /**
-     * @Groups({"user_read", "user_write"})
+     * @Groups({"user:read", "user:write"})
      */
     protected $username;
 
     /**
-     * @Groups({"user_read", "user_write"})
+     * @Groups({"user:read", "user:write"})
      */
     protected $email;
 
     /**
-     * @Groups({"user_write"})
+     * @Groups({"user:write"})
      */
     protected $plainPassword;
 
     /**
-     * @Groups({"user_read", "user_write"})
-     * @todo: to remove in prod
+     * @Groups({"user:read"})
      */
     protected $enabled;
 
     /**
      * @var array
      * override of fosuser
-     * @Groups({"user_read", "user_write"})
+     * @Groups({"user:read", "user:write"})
      */
     protected $roles;
 
@@ -110,7 +108,7 @@ class User extends BaseUser
      * @var string|null
      *
      * @ORM\Column(name="lastname", type="string", length=45, nullable=true, options={"default"="NULL"})
-     * @Groups({"user_read", "user_write"})
+     * @Groups({"user:read", "user:write"})
      */
     private $lastname;
 
@@ -118,7 +116,7 @@ class User extends BaseUser
      * @var string|null
      *
      * @ORM\Column(name="firstname", type="string", length=45, nullable=true, options={"default"="NULL"})
-     * @Groups({"user_read", "user_write"})
+     * @Groups({"user:read", "user:write"})
      */
     private $firstname;
 
@@ -126,7 +124,7 @@ class User extends BaseUser
      * @var int|null
      *
      * @ORM\Column(name="age", type="integer", nullable=true, options={"default"="NULL","unsigned"=true})
-     * @Groups({"user_read", "user_write"})
+     * @Groups({"user:read", "user:write"})
      */
     private $age;
 
@@ -134,7 +132,7 @@ class User extends BaseUser
      * @var string|null
      *
      * @ORM\Column(name="gender", type="string", length=45, nullable=true, options={"default"="NULL"})
-     * @Groups({"user_read", "user_write"})
+     * @Groups({"user:read", "user:write"})
      */
     private $gender;
 
@@ -142,7 +140,7 @@ class User extends BaseUser
      * @var int|null
      *
      * @ORM\Column(name="region", type="integer", nullable=true, options={"default"="NULL"})
-     * @Groups({"user_read", "user_write"})
+     * @Groups({"user:read", "user:write"})
      */
     private $region;
 
@@ -150,7 +148,7 @@ class User extends BaseUser
      * @var boolean
      *
      * @ORM\Column(name="newsletter", type="boolean", nullable=true, options={"default"=false})
-     * @Groups({"user_read", "user_write"})
+     * @Groups({"user:read", "user:write"})
      */
     private $newsletter;
 
