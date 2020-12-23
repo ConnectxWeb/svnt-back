@@ -35,7 +35,6 @@ use App\Service\Generic\Entity\EntityBaseTrait;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -156,6 +155,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+        $this->setEnabled(true);
     }
 
     public function getLastname(): ?string
