@@ -2,14 +2,23 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Service\Generic\Entity\EntityBaseTrait;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
  * Ouverture
+ * * @ApiResource(
+ *     attributes={
+ *      "force_eager"=false,
+ *      "normalization_context"={"groups"={"ouverture:read"}, "enable_max_depth"=true},
+ *      "denormalization_context"={"groups"={"ouverture:write"}}
+ *     }
+ * )
  *
  * @ORM\Table(name="ouverture")
  * @ORM\Entity(repositoryClass="App\Repository\OuvertureRepository")
@@ -27,6 +36,7 @@ class Ouverture
      *      max = 7,
      *      notInRangeMessage = "Le jour de la semaine doit être copris entre {{ min }} et {{ max }}.",
      * )
+     * @Groups({"ouverture:read", "assoc:read"})
      */
     private $jourIndex;
 
@@ -34,6 +44,7 @@ class Ouverture
      * @var \DateTime|null
      *
      * @ORM\Column(name="heure_debut", type="time", nullable=false)
+     * @Groups({"ouverture:read", "assoc:read"})
      */
     private $heureDebut;
 
@@ -41,6 +52,7 @@ class Ouverture
      * @var \DateTime|null
      *
      * @ORM\Column(name="heure_fin", type="time", nullable=false)
+     * @Groups({"ouverture:read", "assoc:read"})
      */
     private $heureFin;
 

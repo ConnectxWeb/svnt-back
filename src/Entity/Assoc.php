@@ -2,13 +2,28 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use App\Service\Generic\Entity\EntityBaseTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Assoc
+ *
+ * @ApiResource(
+ *     attributes={
+ *      "force_eager"=false,
+ *      "normalization_context"={"groups"={"assoc:read"}, "enable_max_depth"=true},
+ *      "denormalization_context"={"groups"={"assoc:write"}}
+ *     }
+ * )
+ * @ApiFilter(SearchFilter::class, properties={"nom": "exact"})
+ * @ApiFilter(BooleanFilter::class, properties={"homme", "femme", "chien", "handicap"})
  *
  * @ORM\Table(name="assoc", indexes={@ORM\Index(name="fk_assoc_ville", columns={"ville_id"})})
  * @ORM\Entity(repositoryClass="App\Repository\AssocRepository")
@@ -21,6 +36,7 @@ class Assoc
      * @var string|null
      *
      * @ORM\Column(name="nom", type="string", length=128, nullable=false, unique=true)
+     * @Groups({"assoc:read"})
      */
     private $nom;
 
@@ -28,6 +44,7 @@ class Assoc
      * @var string|null
      *
      * @ORM\Column(name="description", type="text", length=16777215, nullable=true)
+     * @Groups({"assoc:read"})
      */
     private $description;
 
@@ -35,6 +52,7 @@ class Assoc
      * @var string|null
      *
      * @ORM\Column(name="telephone", type="string", length=32, nullable=true)
+     * @Groups({"assoc:read"})
      */
     private $telephone;
 
@@ -42,6 +60,7 @@ class Assoc
      * @var string|null
      *
      * @ORM\Column(name="adresse", type="string", length=255, nullable=false)
+     * @Groups({"assoc:read"})
      */
     private $adresse;
 
@@ -49,6 +68,7 @@ class Assoc
      * @var string|null
      *
      * @ORM\Column(name="longitude", type="string", length=32, nullable=true)
+     * @Groups({"assoc:read"})
      */
     private $longitude;
 
@@ -56,6 +76,7 @@ class Assoc
      * @var string|null
      *
      * @ORM\Column(name="latitude", type="string", length=32, nullable=true)
+     * @Groups({"assoc:read"})
      */
     private $latitude;
 
@@ -63,6 +84,7 @@ class Assoc
      * @var bool|null
      *
      * @ORM\Column(name="homme", type="boolean", nullable=true)
+     * @Groups({"assoc:read"})
      */
     private $homme;
 
@@ -70,6 +92,7 @@ class Assoc
      * @var bool|null
      *
      * @ORM\Column(name="femme", type="boolean", nullable=true)
+     * @Groups({"assoc:read"})
      */
     private $femme;
 
@@ -77,6 +100,7 @@ class Assoc
      * @var bool|null
      *
      * @ORM\Column(name="chien", type="boolean", nullable=true)
+     * @Groups({"assoc:read"})
      */
     private $chien;
 
@@ -84,6 +108,7 @@ class Assoc
      * @var bool|null
      *
      * @ORM\Column(name="handicap", type="boolean", nullable=true)
+     * @Groups({"assoc:read"})
      */
     private $handicap;
 
@@ -92,6 +117,7 @@ class Assoc
      *
      * @ORM\ManyToOne(targetEntity="Ville", cascade={"persist"})
      * @ORM\JoinColumn(name="ville_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
+     * @Groups({"assoc:read"})
      */
     private $ville;
 
@@ -107,6 +133,7 @@ class Assoc
      *     @ORM\JoinColumn(name="ouverture_id", referencedColumnName="id", onDelete="CASCADE")
      *   }
      * )
+     * @Groups({"assoc:read"})
      */
     private $ouverture;
 
