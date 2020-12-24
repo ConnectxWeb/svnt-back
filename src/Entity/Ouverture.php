@@ -12,7 +12,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Ouverture
- * * @ApiResource(
+ *
+ * @ApiResource(
  *     attributes={
  *      "force_eager"=false,
  *      "normalization_context"={"groups"={"ouverture:read"}, "enable_max_depth"=true},
