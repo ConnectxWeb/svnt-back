@@ -34,7 +34,12 @@ class CustomQueryController extends AbstractController
      */
     public function findAssocs(Request $r)
     {
-        $assocs = $this->repoService->getAssocRepository()->findBy([]);
+        $villeId = $r->get('villeId');
+        $homme = $r->get('homme');
+        $femme = $r->get('femme');
+        $chien = $r->get('chien');
+        $handicap = $r->get('handicap');
+        $assocs = $this->repoService->getAssocRepository()->findCustom($villeId, $homme, $femme, $chien, $handicap);
 //        $limit = ($request->get('limit') !== null ? $request->get('limit') : null);
 //        $userSeances = $this->userHasSeanceRepository->findBy(array(), null, $limit);
 //        if (count($userSeances) === 0) {

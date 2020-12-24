@@ -30,7 +30,7 @@ class MaraudeTest extends UnitBase
 
     public function testAddMaraudes()
     {
-        for ($i = 1; $i <= $this->faker->numberBetween(1, 4); $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             $this->addMaraude();
         }
 

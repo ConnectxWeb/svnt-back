@@ -29,7 +29,7 @@ class AssocTest extends UnitBase
 
     public function testAddAssocs()
     {
-        for ($i = 1; $i <= 2; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             $this->addAssoc();
         }
 
