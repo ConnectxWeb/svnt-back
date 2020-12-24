@@ -3,9 +3,8 @@
 namespace App\Tests;
 
 
-use App\Entity\Assoc;
 use App\Entity\Maraude;
-use App\Entity\Ouverture;
+
 
 class MaraudeTest extends UnitBase
 {
@@ -69,7 +68,7 @@ class MaraudeTest extends UnitBase
             sprintf('+%d days', $startDay + $durationDays)));
 
         for ($i = 1; $i <= $this->faker->numberBetween(1, 10); $i++) {
-            $ouverture = $this->addOuverture($maraude);
+            $ouverture = $this->addOuverture();
             $maraude->addOuverture($ouverture);
         }
 

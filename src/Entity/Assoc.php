@@ -13,6 +13,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
+
 /**
  * Assoc
  *
@@ -114,9 +115,9 @@ class Assoc
     private $handicap;
 
     /**
-     * @var \Ville
+     * @var Ville
      *
-     * @ORM\ManyToOne(targetEntity="Ville", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Ville", inversedBy="assocs", cascade={"persist"})
      * @ORM\JoinColumn(name="ville_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      * @Groups({"assoc:read"})
      */
@@ -125,7 +126,6 @@ class Assoc
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Maraude", mappedBy="assoc", orphanRemoval=true)
      * @Groups({"assoc:read"})
-     * ApiSubresource
      */
     private $maraudes;
 
@@ -150,7 +150,7 @@ class Assoc
      */
     public function __construct()
     {
-        $this->ouverture = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ouverture = new ArrayCollection();
     }
 
     public function __toString()

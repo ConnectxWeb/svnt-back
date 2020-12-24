@@ -33,6 +33,12 @@ class Ville
      */
     private $nom;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Assoc", mappedBy="ville", orphanRemoval=true)
+     * @Groups({"ville:read"})
+     */
+    private $assocs;
+
     public function getNom(): ?string
     {
         return $this->nom;
@@ -48,5 +54,21 @@ class Ville
     public function __toString()
     {
         return $this->nom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAssocs()
+    {
+        return $this->assocs;
+    }
+
+    /**
+     * @param mixed $assocs
+     */
+    public function setAssocs($assocs): void
+    {
+        $this->assocs = $assocs;
     }
 }

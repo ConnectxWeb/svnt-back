@@ -4,7 +4,7 @@ namespace App\Tests;
 
 
 use App\Entity\Assoc;
-use App\Entity\Ouverture;
+
 
 class AssocTest extends UnitBase
 {
