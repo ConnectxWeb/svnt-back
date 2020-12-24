@@ -16,9 +16,8 @@ class CustomQueryController extends AbstractController
      */
     private $repoService;
 
-    public function __construct(
-        RepoService $repoService
-    ) {
+    public function __construct(RepoService $repoService)
+    {
         $this->repoService = $repoService;
     }
 
@@ -44,5 +43,5 @@ class CustomQueryController extends AbstractController
 
         return $assocs;
     }
-    
+
 }
