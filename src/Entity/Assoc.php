@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use App\Service\Generic\Entity\EntityBaseTrait;
@@ -120,6 +121,13 @@ class Assoc
      * @Groups({"assoc:read"})
      */
     private $ville;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Maraude", mappedBy="assoc", orphanRemoval=true)
+     * @Groups({"assoc:read"})
+     * ApiSubresource
+     */
+    private $maraudes;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -304,6 +312,22 @@ class Assoc
         $this->ouverture->removeElement($ouverture);
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMaraudes()
+    {
+        return $this->maraudes;
+    }
+
+    /**
+     * @param mixed $maraudes
+     */
+    public function setMaraudes($maraudes): void
+    {
+        $this->maraudes = $maraudes;
     }
 
 }

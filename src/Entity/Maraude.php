@@ -2,13 +2,23 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Service\Generic\Entity\EntityBaseTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Maraude
+ *
+ * @ApiResource(
+ *     attributes={
+ *      "force_eager"=false,
+ *      "normalization_context"={"groups"={"maraude:read"}, "enable_max_depth"=true},
+ *      "denormalization_context"={"groups"={"maraude:write"}}
+ *     }
+ * )
  *
  * @ORM\Table(name="maraude", indexes={@ORM\Index(name="fk_assoc_copy1_assoc1", columns={"assoc_id"})})
  * @ORM\Entity(repositoryClass="App\Repository\MaraudeRepository")
@@ -21,6 +31,7 @@ class Maraude
      * @var string|null
      *
      * @ORM\Column(name="nom", type="string", length=128, nullable=false, unique=true)
+     * @Groups({"maraude:read", "assoc:read"})
      */
     private $nom;
 
@@ -28,6 +39,7 @@ class Maraude
      * @var string|null
      *
      * @ORM\Column(name="description", type="text", length=16777215, nullable=true)
+     * @Groups({"maraude:read", "assoc:read"})
      */
     private $description;
 
@@ -35,6 +47,7 @@ class Maraude
      * @var string|null
      *
      * @ORM\Column(name="telephone", type="string", length=32, nullable=true)
+     * @Groups({"maraude:read", "assoc:read"})
      */
     private $telephone;
 
@@ -42,6 +55,7 @@ class Maraude
      * @var string|null
      *
      * @ORM\Column(name="adresse", type="string", length=255, nullable=false)
+     * @Groups({"maraude:read", "assoc:read"})
      */
     private $adresse;
 
@@ -49,6 +63,7 @@ class Maraude
      * @var string|null
      *
      * @ORM\Column(name="longitude", type="string", length=32, nullable=true)
+     * @Groups({"maraude:read", "assoc:read"})
      */
     private $longitude;
 
@@ -56,6 +71,7 @@ class Maraude
      * @var string|null
      *
      * @ORM\Column(name="latitude", type="string", length=32, nullable=true)
+     * @Groups({"maraude:read", "assoc:read"})
      */
     private $latitude;
 
@@ -63,6 +79,7 @@ class Maraude
      * @var \DateTime|null
      *
      * @ORM\Column(name="date_debut", type="datetime", nullable=true)
+     * @Groups({"maraude:read", "assoc:read"})
      */
     private $dateDebut;
 
@@ -70,14 +87,16 @@ class Maraude
      * @var \DateTime|null
      *
      * @ORM\Column(name="date_fin", type="datetime", nullable=true)
+     * @Groups({"maraude:read", "assoc:read"})
      */
     private $dateFin;
 
     /**
      * @var \Assoc
      *
-     * @ORM\ManyToOne(targetEntity="Assoc", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Assoc", inversedBy="maraudes", cascade={"persist"})
      * @ORM\JoinColumn(name="assoc_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
+     * @Groups({"maraude:read"})
      */
     private $assoc;
 
@@ -93,6 +112,8 @@ class Maraude
      *     @ORM\JoinColumn(name="ouverture_id", referencedColumnName="id", onDelete="CASCADE")
      *   }
      * )
+     *
+     * @Groups({"maraude:read", "assoc:read"})
      */
     private $ouverture;
 
