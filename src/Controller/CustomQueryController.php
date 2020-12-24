@@ -34,75 +34,15 @@ class CustomQueryController extends AbstractController
      */
     public function findAssocs(Request $r)
     {
+        // http://svnt.loc/api/findAssocs?villeId=2&homme=1&femme=1&chien=1&handicap=1
         $villeId = $r->get('villeId');
         $homme = $r->get('homme');
         $femme = $r->get('femme');
         $chien = $r->get('chien');
         $handicap = $r->get('handicap');
         $assocs = $this->repoService->getAssocRepository()->findCustom($villeId, $homme, $femme, $chien, $handicap);
-//        $limit = ($request->get('limit') !== null ? $request->get('limit') : null);
-//        $userSeances = $this->userHasSeanceRepository->findBy(array(), null, $limit);
-//        if (count($userSeances) === 0) {
-//            return $userSeances;
-//        }
-//        //group by seance
-//        $seances = null;
-//        foreach ($userSeances as $userSeance) {
-//            $seances[$userSeance->getSeance()->getId()][] = $userSeance->getSeance();
-//        }
-//        //create associative array with userCount
-//        $userSeances = array();
-//        foreach ($seances as $seance) {
-//            $userSeances[] =
-//                [
-//                    'seance' => current($seance),
-//                    'userCount' => count($seance)
-//                ];
-//        }
-//        //sort by userCount
-//        usort($userSeances, function ($item1, $item2) {
-//            return $item2['userCount'] <=> $item1['userCount'];
-//        });
 
         return $assocs;
     }
-
-    /**
-     * @Route("/query/bestPrograms",
-     *     name="find_best_programs",
-     *     defaults={
-     *          "_api_resource_class"=Seance::class,
-     *          "_api_collection_operation_name"="findBestPrograms"
-     * })
-     * @param Request $request
-     * @return array
-     */
-    public function findBestPrograms(Request $request)
-    {
-//        $limit = ($request->get('limit') !== null ? $request->get('limit') : null);
-//        $userSeances = $this->userHasSeanceRepository->findBy(array(), null, $limit);
-//        if (count($userSeances) === 0) {
-//            return $userSeances;
-//        }
-//        //group by program
-//        $programs = null;
-//        foreach ($userSeances as $userSeance) {
-//            $programs[$userSeance->getSeance()->getProgram()->getId()][] = $userSeance->getSeance()->getProgram();
-//        }
-//        //create associative array with userCount
-        $userPrograms = array();
-//        foreach ($programs as $program) {
-//            $userPrograms[] =
-//                [
-//                    'program' => current($program),
-//                    'userCount' => count($program)
-//                ];
-//        }
-//        //sort by userCount
-//        usort($userPrograms, function ($item1, $item2) {
-//            return $item2['userCount'] <=> $item1['userCount'];
-//        });
-
-        return $userPrograms;
-    }
+    
 }
