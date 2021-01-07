@@ -24,6 +24,8 @@
 ###> lexik/jwt-authentication-bundle ###
 /config/jwt/*.pem
 ###< lexik/jwt-authentication-bundle ###
+
 /composer.lock
 /symfony.lock
 /.php_cs.dist
+/.env
