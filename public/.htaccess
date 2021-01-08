@@ -20,6 +20,24 @@ DirectoryIndex index.php
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    #Redirect non-www to www
+	RewriteCond %{HTTP_HOST} !^svnt\.fr [NC]
+	RewriteCond %{HTTP_HOST} !^back\.svnt\.fr [NC]
+	RewriteCond %{HTTP_HOST} !^svnt\.loc [NC]
+	RewriteCond %{HTTP_HOST} !^localhost [NC]
+    RewriteRule ^(.*)$ https://www.svnt.fr/$1 [R=301,L]
+
+    #Force http to https
+    RewriteCond %{HTTP_HOST} ^back\.svnt\.fr [NC]
+    RewriteCond %{SERVER_PORT} 80
+    RewriteRule ^(.*)$ https://back.svnt.fr/$1 [R,L]
+
+    RewriteCond %{HTTP_HOST} ^www\.svnt\.fr [NC]
+    RewriteCond %{HTTP_HOST} !^svnt\.loc [NC]
+    RewriteCond %{HTTP_HOST} !^localhost [NC]
+	RewriteCond %{SERVER_PORT} 80
+	RewriteRule ^(.*)$ https://www.svnt.fr/$1 [R,L]
+
     # Determine the RewriteBase automatically and set it as environment variable.
     # If you are using Apache aliases to do mass virtual hosting or installed the
     # project in a subdirectory, the base path will be prepended to allow proper
