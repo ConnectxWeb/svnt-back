@@ -4,6 +4,7 @@ Bundles to install for services:
 - composer require symfony/swiftmailer-bundle
 - composer require guzzlehttp/guzzle:^7.0
 - composer require nexylan/slack
+- composer require gedmo/doctrine-extensions
 
 ** add gedmo.listener.timestampable listener in service.yaml
 
