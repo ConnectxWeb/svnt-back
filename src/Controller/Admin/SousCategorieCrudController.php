@@ -25,9 +25,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Assoc;
-use App\Entity\Categorie;
-use App\Form\OuvertureType;
+use App\Entity\SousCategorie;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
@@ -39,11 +37,11 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 
-class CategoryCrudController extends AbstractCrudController
+class SousCategorieCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Categorie::class;
+        return SousCategorie::class;
     }
 
     public function configureFields(string $pageName): iterable
@@ -51,6 +49,7 @@ class CategoryCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
 //            AssociationField::new('ville'),
+            AssociationField::new('categorie'),
             TextField::new('nom'),
 //            TextEditorField::new('description'),
         ];

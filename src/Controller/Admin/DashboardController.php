@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Assoc;
 use App\Entity\Categorie;
 use App\Entity\Maraude;
+use App\Entity\SousCategorie;
 use App\Entity\User;
 use App\Entity\Ville;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
@@ -41,6 +42,7 @@ class DashboardController extends AbstractDashboardController
     {
 //        yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Catégorie', 'fas fa-list', Categorie::class);
+        yield MenuItem::linkToCrud('Sous-catégorie', 'fas fa-list', SousCategorie::class);
         yield MenuItem::linkToCrud('Ville', 'fas fa-list', Ville::class);
         yield MenuItem::linkToCrud('Assoc', 'fas fa-list', Assoc::class);
         yield MenuItem::linkToCrud('Maraude', 'fas fa-list', Maraude::class);
