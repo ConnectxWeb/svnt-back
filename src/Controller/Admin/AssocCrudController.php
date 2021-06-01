@@ -37,6 +37,7 @@ class AssocCrudController extends AbstractCrudController
             TextField::new('latitude'),
 
             FormField::addPanel('Options'),
+            AssociationField::new('sousCategories'),
             BooleanField::new('homme'),
             BooleanField::new('femme'),
             BooleanField::new('chien'),

@@ -146,11 +146,17 @@ class Assoc
     private $ouverture;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\SousCategorie", mappedBy="assocs")
+     */
+    private $sousCategories;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->ouverture = new ArrayCollection();
+        $this->sousCategories = new ArrayCollection();
     }
 
     public function __toString()
@@ -328,6 +334,36 @@ class Assoc
     public function setMaraudes($maraudes): void
     {
         $this->maraudes = $maraudes;
+    }
+
+    /**
+     * @return Collection|SousCategorie[]
+     */
+    public function getSousCategories(): Collection
+    {
+        return $this->sousCategories;
+    }
+
+    public function addSousCategory(SousCategorie $sousCategory): self
+    {
+        if (!$this->sousCategories->contains($sousCategory)) {
+            $this->sousCategories[] = $sousCategory;
+            $sousCategory->setAssocs($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSousCategory(SousCategorie $sousCategory): self
+    {
+        if ($this->sousCategories->removeElement($sousCategory)) {
+            // set the owning side to null (unless already changed)
+            if ($sousCategory->getAssocs() === $this) {
+                $sousCategory->setAssocs(null);
+            }
+        }
+
+        return $this;
     }
 
 }

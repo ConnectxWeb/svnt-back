@@ -30,6 +30,11 @@ class SousCategorie
      */
     private $categorie;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Assoc", inversedBy="sousCategories")
+     */
+    private $assocs;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -57,5 +62,22 @@ class SousCategorie
         $this->categorie = $categorie;
 
         return $this;
+    }
+
+    public function getAssocs(): ?Assoc
+    {
+        return $this->assocs;
+    }
+
+    public function setAssocs(?Assoc $assocs): self
+    {
+        $this->assocs = $assocs;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getNom();
     }
 }
