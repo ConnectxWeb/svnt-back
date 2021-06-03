@@ -344,22 +344,23 @@ class Assoc
         return $this->sousCategories;
     }
 
-    public function addSousCategory(SousCategorie $sousCategory): self
+    public function addSousCategory(SousCategorie $sousCategorie
+    ): self //magic method: should be written "category" to be detected by easyadmin update
     {
-        if (!$this->sousCategories->contains($sousCategory)) {
-            $this->sousCategories[] = $sousCategory;
-            $sousCategory->setAssocs($this);
+        if (!$this->sousCategories->contains($sousCategorie)) {
+            $this->sousCategories[] = $sousCategorie;
+            $sousCategorie->setAssocs($this);
         }
 
         return $this;
     }
 
-    public function removeSousCategory(SousCategorie $sousCategory): self
+    public function removeSousCategory(SousCategorie $sousCategorie): self
     {
-        if ($this->sousCategories->removeElement($sousCategory)) {
+        if ($this->sousCategories->removeElement($sousCategorie)) {
             // set the owning side to null (unless already changed)
-            if ($sousCategory->getAssocs() === $this) {
-                $sousCategory->setAssocs(null);
+            if ($sousCategorie->getAssocs() === $this) {
+                $sousCategorie->setAssocs(null);
             }
         }
 

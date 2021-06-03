@@ -31,7 +31,8 @@ class SousCategorie
     private $categorie;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Assoc", inversedBy="sousCategories")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Assoc", inversedBy="sousCategories", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="assoc_id", referencedColumnName="id", nullable=true, onDelete="CASCADE")
      */
     private $assocs;
 

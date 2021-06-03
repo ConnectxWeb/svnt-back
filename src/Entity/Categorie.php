@@ -3,14 +3,14 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\CategoryRepository;
+use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource()
- * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ * @ORM\Entity(repositoryClass=CategorieRepository::class)
  */
 class Categorie
 {
@@ -61,22 +61,22 @@ class Categorie
         return $this->sousCategories;
     }
 
-    public function addSousCategory(SousCategorie $sousCategory): self
+    public function addSousCategorie(SousCategorie $sousCategorie): self
     {
-        if (!$this->sousCategories->contains($sousCategory)) {
-            $this->sousCategories[] = $sousCategory;
-            $sousCategory->setCategorie($this);
+        if (!$this->sousCategories->contains($sousCategorie)) {
+            $this->sousCategories[] = $sousCategorie;
+            $sousCategorie->setCategorie($this);
         }
 
         return $this;
     }
 
-    public function removeSousCategory(SousCategorie $sousCategory): self
+    public function removeSousCategorie(SousCategorie $sousCategorie): self
     {
-        if ($this->sousCategories->removeElement($sousCategory)) {
+        if ($this->sousCategories->removeElement($sousCategorie)) {
             // set the owning side to null (unless already changed)
-            if ($sousCategory->getCategorie() === $this) {
-                $sousCategory->setCategorie(null);
+            if ($sousCategorie->getCategorie() === $this) {
+                $sousCategorie->setCategorie(null);
             }
         }
 

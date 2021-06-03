@@ -32,7 +32,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Admin')
+            ->setTitle('Backoffice La Savonnette')
             // set this option if you prefer the page content to span the entire
             // browser width, instead of the default design which sets a max width
             ->renderContentMaximized();
@@ -41,12 +41,15 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
 //        yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Catégorie', 'fas fa-list', Categorie::class);
-        yield MenuItem::linkToCrud('Sous-catégorie', 'fas fa-list', SousCategorie::class);
-        yield MenuItem::linkToCrud('Ville', 'fas fa-list', Ville::class);
+
         yield MenuItem::linkToCrud('Assoc', 'fas fa-list', Assoc::class);
         yield MenuItem::linkToCrud('Maraude', 'fas fa-list', Maraude::class);
 //        yield MenuItem::linkToCrud('Ouverture', 'fas fa-list', Ouverture::class);
+
+        yield MenuItem::section('Admin');
+        yield MenuItem::linkToCrud('Catégorie', 'fas fa-list', Categorie::class);
+        yield MenuItem::linkToCrud('Sous-catégorie', 'fas fa-list', SousCategorie::class);
+        yield MenuItem::linkToCrud('Ville', 'fas fa-list', Ville::class);
         yield MenuItem::linkToCrud('User', 'fas fa-list', User::class);
 
         yield MenuItem::section('User');

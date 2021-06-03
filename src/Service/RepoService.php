@@ -27,8 +27,10 @@ namespace App\Service;
 
 
 use App\Repository\AssocRepository;
+use App\Repository\CategorieRepository;
 use App\Repository\MaraudeRepository;
 use App\Repository\OuvertureRepository;
+use App\Repository\SousCategorieRepository;
 use App\Repository\UserRepository;
 use App\Repository\VilleRepository;
 
@@ -54,19 +56,31 @@ class RepoService
      * @var UserRepository
      */
     private $userRepository;
+    /**
+     * @var CategorieRepository
+     */
+    private $categoryRepository;
+    /**
+     * @var SousCategorieRepository
+     */
+    private $sousCategorieRepository;
 
     public function __construct(
         AssocRepository $assocRepository,
         MaraudeRepository $maraudeRepository,
         OuvertureRepository $ouvertureRepository,
         VilleRepository $villeRepository,
-        UserRepository $userRepository
+        UserRepository $userRepository,
+        CategorieRepository $categoryRepository,
+        SousCategorieRepository $sousCategorieRepository
     ) {
         $this->assocRepository = $assocRepository;
         $this->maraudeRepository = $maraudeRepository;
         $this->ouvertureRepository = $ouvertureRepository;
         $this->villeRepository = $villeRepository;
         $this->userRepository = $userRepository;
+        $this->categoryRepository = $categoryRepository;
+        $this->sousCategorieRepository = $sousCategorieRepository;
     }
 
     /**
@@ -107,5 +121,21 @@ class RepoService
     public function getUserRepository(): UserRepository
     {
         return $this->userRepository;
+    }
+
+    /**
+     * @return CategorieRepository
+     */
+    public function getCategoryRepository(): CategorieRepository
+    {
+        return $this->categoryRepository;
+    }
+
+    /**
+     * @return SousCategorieRepository
+     */
+    public function getSousCategorieRepository(): SousCategorieRepository
+    {
+        return $this->sousCategorieRepository;
     }
 }
