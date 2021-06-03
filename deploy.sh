@@ -6,6 +6,10 @@ echo "##########################################################################
 #git checkout public/index_dev.php
 #git pull
 
+echo "Delete .env.local & .env.test if existing"
+rm -rf .env.local
+rm -rf .env.test
+
 echo "Cleaning cache and logs"
 rm -rf var/cache/* var/logs/*
 
