@@ -26,12 +26,13 @@ class Categorie
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"categorie:read", "ville:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"categorie:read"})
+     * @Groups({"categorie:read", "ville:read"})
      */
     private $nom;
 

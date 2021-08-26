@@ -26,6 +26,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Ouverture
 {
+    /**
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned"=true})
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
     use EntityBaseTrait;
 
     /**
@@ -173,6 +180,14 @@ class Ouverture
         }
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
 }

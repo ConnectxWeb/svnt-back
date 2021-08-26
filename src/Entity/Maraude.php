@@ -25,6 +25,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class Maraude
 {
+    /**
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned"=true})
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"maraude:read", "ville:read"})
+     */
+    private $id;
+
     use EntityBaseTrait;
 
     /**
@@ -259,6 +267,14 @@ class Maraude
     public function setTelephone(?string $telephone): void
     {
         $this->telephone = $telephone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
 }

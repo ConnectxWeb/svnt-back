@@ -62,11 +62,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class User extends BaseUser
 {
-    use EntityBaseTrait;
-
     /**
-     * @var int
-     *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -75,6 +71,8 @@ class User extends BaseUser
      * @Groups({"user:read"})
      */
     protected $id;
+
+    use EntityBaseTrait;
 
     /**
      * @Groups({"user:read", "user:write"})

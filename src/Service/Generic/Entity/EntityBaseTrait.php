@@ -6,18 +6,13 @@
 namespace App\Service\Generic\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo; //needed
+use Gedmo\Mapping\Annotation as Gedmo;
+
+//needed
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 trait EntityBaseTrait
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned"=true})
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
     use TimestampableEntity;
 
     public function getId(): ?int

@@ -32,6 +32,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class Assoc
 {
+    /**
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned"=true})
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"assoc:read", "ville:read"})
+     */
+    private $id;
+
     use EntityBaseTrait;
 
     /**
@@ -115,8 +123,6 @@ class Assoc
     private $handicap;
 
     /**
-     * @var Ville
-     *
      * @ORM\ManyToOne(targetEntity="Ville", inversedBy="assocs", cascade={"persist"})
      * @ORM\JoinColumn(name="ville_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      * @Groups({"assoc:read"})
@@ -147,6 +153,7 @@ class Assoc
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\SousCategorie", mappedBy="assocs")
+     * @Groups({"assoc:read", "ville:read"})
      */
     private $sousCategories;
 
@@ -365,6 +372,14 @@ class Assoc
         }
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
 }

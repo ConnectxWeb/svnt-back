@@ -2,10 +2,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Service\Generic\Entity\EntityBaseTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+
 
 /**
  * Ville
@@ -23,6 +27,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class Ville
 {
+    /**
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned"=true})
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"ville:read"})
+     */
+    private $id;
+
     use EntityBaseTrait;
 
     /**
@@ -70,5 +82,13 @@ class Ville
     public function setAssocs($assocs): void
     {
         $this->assocs = $assocs;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }

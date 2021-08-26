@@ -17,20 +17,20 @@ class SousCategorie
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     *
-     * @Groups({"categorie:read"})
+     * @Groups({"categorie:read", "ville:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"categorie:read"})
+     * @Groups({"categorie:read", "ville:read"})
      */
     private $nom;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Categorie", inversedBy="sousCategories")
      * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
+     * @Groups({"categorie:read", "ville:read"})
      */
     private $categorie;
 
