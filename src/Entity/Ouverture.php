@@ -37,7 +37,7 @@ class Ouverture
      *      max = 7,
      *      notInRangeMessage = "Le jour de la semaine doit être copris entre {{ min }} et {{ max }}.",
      * )
-     * @Groups({"ouverture:read", "assoc:read"})
+     * @Groups({"ouverture:read", "assoc:read", "maraude:read", "ville:read"})
      */
     private $jourIndex;
 
@@ -45,7 +45,7 @@ class Ouverture
      * @var \DateTime|null
      *
      * @ORM\Column(name="heure_debut", type="time", nullable=false)
-     * @Groups({"ouverture:read", "assoc:read"})
+     * @Groups({"ouverture:read", "assoc:read", "maraude:read", "ville:read"})
      */
     private $heureDebut;
 
@@ -53,7 +53,7 @@ class Ouverture
      * @var \DateTime|null
      *
      * @ORM\Column(name="heure_fin", type="time", nullable=false)
-     * @Groups({"ouverture:read", "assoc:read"})
+     * @Groups({"ouverture:read", "assoc:read", "maraude:read", "ville:read"})
      */
     private $heureFin;
 

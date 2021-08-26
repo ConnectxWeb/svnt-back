@@ -38,7 +38,7 @@ class Assoc
      * @var string|null
      *
      * @ORM\Column(name="nom", type="string", length=128, nullable=false, unique=true)
-     * @Groups({"assoc:read"})
+     * @Groups({"assoc:read", "ville:read"})
      */
     private $nom;
 
@@ -46,7 +46,7 @@ class Assoc
      * @var string|null
      *
      * @ORM\Column(name="description", type="text", length=16777215, nullable=true)
-     * @Groups({"assoc:read"})
+     * @Groups({"assoc:read", "ville:read"})
      */
     private $description;
 
@@ -54,7 +54,7 @@ class Assoc
      * @var string|null
      *
      * @ORM\Column(name="telephone", type="string", length=32, nullable=true)
-     * @Groups({"assoc:read"})
+     * @Groups({"assoc:read", "ville:read"})
      */
     private $telephone;
 
@@ -62,7 +62,7 @@ class Assoc
      * @var string|null
      *
      * @ORM\Column(name="adresse", type="string", length=255, nullable=false)
-     * @Groups({"assoc:read"})
+     * @Groups({"assoc:read", "ville:read"})
      */
     private $adresse;
 
@@ -70,7 +70,7 @@ class Assoc
      * @var string|null
      *
      * @ORM\Column(name="longitude", type="string", length=32, nullable=true)
-     * @Groups({"assoc:read"})
+     * @Groups({"assoc:read", "ville:read"})
      */
     private $longitude;
 
@@ -78,7 +78,7 @@ class Assoc
      * @var string|null
      *
      * @ORM\Column(name="latitude", type="string", length=32, nullable=true)
-     * @Groups({"assoc:read"})
+     * @Groups({"assoc:read", "ville:read"})
      */
     private $latitude;
 
@@ -86,7 +86,7 @@ class Assoc
      * @var bool|null
      *
      * @ORM\Column(name="homme", type="boolean", nullable=true)
-     * @Groups({"assoc:read"})
+     * @Groups({"assoc:read", "ville:read"})
      */
     private $homme;
 
@@ -94,7 +94,7 @@ class Assoc
      * @var bool|null
      *
      * @ORM\Column(name="femme", type="boolean", nullable=true)
-     * @Groups({"assoc:read"})
+     * @Groups({"assoc:read", "ville:read"})
      */
     private $femme;
 
@@ -102,7 +102,7 @@ class Assoc
      * @var bool|null
      *
      * @ORM\Column(name="chien", type="boolean", nullable=true)
-     * @Groups({"assoc:read"})
+     * @Groups({"assoc:read", "ville:read"})
      */
     private $chien;
 
@@ -110,7 +110,7 @@ class Assoc
      * @var bool|null
      *
      * @ORM\Column(name="handicap", type="boolean", nullable=true)
-     * @Groups({"assoc:read"})
+     * @Groups({"assoc:read", "ville:read"})
      */
     private $handicap;
 
@@ -125,7 +125,7 @@ class Assoc
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Maraude", mappedBy="assoc", orphanRemoval=true)
-     * @Groups({"assoc:read"})
+     * @Groups({"assoc:read", "ville:read"})
      */
     private $maraudes;
 
@@ -141,7 +141,7 @@ class Assoc
      *     @ORM\JoinColumn(name="ouverture_id", referencedColumnName="id", onDelete="CASCADE")
      *   }
      * )
-     * @Groups({"assoc:read"})
+     * @Groups({"assoc:read", "ville:read"})
      */
     private $ouverture;
 

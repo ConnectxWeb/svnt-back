@@ -31,7 +31,7 @@ class Maraude
      * @var string|null
      *
      * @ORM\Column(name="nom", type="string", length=128, nullable=false, unique=true)
-     * @Groups({"maraude:read", "assoc:read"})
+     * @Groups({"maraude:read", "assoc:read", "ville:read"})
      */
     private $nom;
 
@@ -39,7 +39,7 @@ class Maraude
      * @var string|null
      *
      * @ORM\Column(name="description", type="text", length=16777215, nullable=true)
-     * @Groups({"maraude:read", "assoc:read"})
+     * @Groups({"maraude:read", "assoc:read", "ville:read"})
      */
     private $description;
 
@@ -47,7 +47,7 @@ class Maraude
      * @var string|null
      *
      * @ORM\Column(name="telephone", type="string", length=32, nullable=true)
-     * @Groups({"maraude:read", "assoc:read"})
+     * @Groups({"maraude:read", "assoc:read", "ville:read"})
      */
     private $telephone;
 
@@ -55,7 +55,7 @@ class Maraude
      * @var string|null
      *
      * @ORM\Column(name="adresse", type="string", length=255, nullable=false)
-     * @Groups({"maraude:read", "assoc:read"})
+     * @Groups({"maraude:read", "assoc:read", "ville:read"})
      */
     private $adresse;
 
@@ -63,7 +63,7 @@ class Maraude
      * @var string|null
      *
      * @ORM\Column(name="longitude", type="string", length=32, nullable=true)
-     * @Groups({"maraude:read", "assoc:read"})
+     * @Groups({"maraude:read", "assoc:read", "ville:read"})
      */
     private $longitude;
 
@@ -71,7 +71,7 @@ class Maraude
      * @var string|null
      *
      * @ORM\Column(name="latitude", type="string", length=32, nullable=true)
-     * @Groups({"maraude:read", "assoc:read"})
+     * @Groups({"maraude:read", "assoc:read", "ville:read"})
      */
     private $latitude;
 
@@ -79,7 +79,7 @@ class Maraude
      * @var \DateTime|null
      *
      * @ORM\Column(name="date_debut", type="datetime", nullable=true)
-     * @Groups({"maraude:read", "assoc:read"})
+     * @Groups({"maraude:read", "assoc:read", "ville:read"})
      */
     private $dateDebut;
 
@@ -87,7 +87,7 @@ class Maraude
      * @var \DateTime|null
      *
      * @ORM\Column(name="date_fin", type="datetime", nullable=true)
-     * @Groups({"maraude:read", "assoc:read"})
+     * @Groups({"maraude:read", "assoc:read", "ville:read"})
      */
     private $dateFin;
 
@@ -113,7 +113,7 @@ class Maraude
      *   }
      * )
      *
-     * @Groups({"maraude:read", "assoc:read"})
+     * @Groups({"maraude:read", "assoc:read", "ville:read"})
      */
     private $ouverture;
 

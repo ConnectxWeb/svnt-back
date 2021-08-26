@@ -1,10 +1,10 @@
 api_platform:
-  title: API SVNT
+  title: API PRATIK
   #  description: ''
   version: 1.0.0
 
   mapping:
-    paths: ['%kernel.project_dir%/src/Entity']
+    paths: [ '%kernel.project_dir%/src/Entity' ]
 
   enable_fos_user: true
 
@@ -77,7 +77,7 @@ api_platform:
     # The oauth authentication url.
     authorizationUrl: '/oauth/v2/auth'
     # The oauth scopes.
-    scopes: []
+    scopes: [ ]
 
   graphql:
     enabled: false
@@ -134,16 +134,16 @@ api_platform:
     # Default value for the response shared (proxy) max age.
     #    shared_max_age: ~
     # Default values of the "Vary" HTTP header.
-    vary: ['Accept']
+    vary: [ 'Accept' ]
     # To make all responses public by default.
     public: ~
     invalidation:
       # To enable the tags-based cache invalidation system.
       enabled: false
       # URLs of the Varnish servers to purge using cache tags when a resource is updated.
-      varnish_urls: []
+      varnish_urls: [ ]
       # To pass options to the client charged with the request.
-      request_options: []
+      request_options: [ ]
 
   # The list of exceptions mapped to their HTTP status code.
   exception_to_status:
@@ -155,18 +155,18 @@ api_platform:
 
   # The list of enabled formats. The first one will be the default.
   formats:
-    jsonld:
-      mime_types: ['application/ld+json']
     json:
-      mime_types: ['application/json']
+      mime_types: [ 'application/json' ]
+    jsonld:
+      mime_types: [ 'application/ld+json' ]
     html:
-      mime_types: ['text/html']
+      mime_types: [ 'text/html' ]
     # ...
 
   # The list of enabled error formats. The first one will be the default.
   error_formats:
     jsonproblem:
-      mime_types: ['application/problem+json']
+      mime_types: [ 'application/problem+json' ]
     jsonld:
-      mime_types: ['application/ld+json']
+      mime_types: [ 'application/ld+json' ]
     # ...
