@@ -11,7 +11,7 @@ rm -rf .env.local
 rm -rf .env.test
 
 echo "Backup DB"
-mysqldump --host=svntfrkroot.mysql.db --user=svntfrkroot --port=3306 --password=ds654fds54fhgj789A svntfrkroot >./_backup/db/backup_$(date +%Y-%m-%d-%H.%M.%S).sql
+mysqldump --no-tablespaces --host=svntfrkroot.mysql.db --user=svntfrkroot --port=3306 --password=ds654fds54fhgj789A svntfrkroot >./_backup/db/backup_$(date +%Y-%m-%d-%H.%M.%S).sql
 
 echo "Cleaning cache and logs"
 rm -rf var/cache/* var/logs/*
