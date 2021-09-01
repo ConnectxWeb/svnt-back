@@ -48,6 +48,11 @@ class Categorie
      */
     private $sousCategories;
 
+    /**
+     * @ORM\Column(type="integer", options={"default"="999", "unsigned"=true})
+     * @Groups({"categorie:read", "ville:read"})
+     */
+    private $ordre;
 
     public function __construct()
     {
@@ -120,5 +125,21 @@ class Categorie
     public function setAssocs($assocs): void
     {
         $this->assocs = $assocs;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrdre()
+    {
+        return $this->ordre;
+    }
+
+    /**
+     * @param mixed $ordre
+     */
+    public function setOrdre($ordre): void
+    {
+        $this->ordre = $ordre;
     }
 }

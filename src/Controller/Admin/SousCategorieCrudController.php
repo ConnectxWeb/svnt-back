@@ -32,6 +32,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -51,6 +52,7 @@ class SousCategorieCrudController extends AbstractCrudController
 //            AssociationField::new('ville'),
             AssociationField::new('categorie'),
             TextField::new('nom'),
+            IntegerField::new('ordre', '(Défaut 999, 0,1,2,3.. en premier)'),
 //            TextEditorField::new('description'),
         ];
     }

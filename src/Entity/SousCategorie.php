@@ -40,6 +40,13 @@ class SousCategorie
      */
     private $assocs;
 
+    /**
+     * @ORM\Column(type="integer", options={"default"="999", "unsigned"=true})
+     * @Groups({"categorie:read", "ville:read"})
+     */
+    private $ordre;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -84,5 +91,21 @@ class SousCategorie
     public function __toString()
     {
         return $this->getNom();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrdre()
+    {
+        return $this->ordre;
+    }
+
+    /**
+     * @param mixed $ordre
+     */
+    public function setOrdre($ordre): void
+    {
+        $this->ordre = $ordre;
     }
 }
