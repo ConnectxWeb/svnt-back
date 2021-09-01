@@ -152,6 +152,12 @@ class Assoc
     private $ouverture;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Categorie", mappedBy="assocs")
+     * @Groups({"assoc:read", "ville:read"})
+     */
+    private $categories;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\SousCategorie", mappedBy="assocs")
      * @Groups({"assoc:read", "ville:read"})
      */
@@ -163,6 +169,7 @@ class Assoc
     public function __construct()
     {
         $this->ouverture = new ArrayCollection();
+        $this->categories = new ArrayCollection();
         $this->sousCategories = new ArrayCollection();
     }
 
@@ -380,6 +387,40 @@ class Assoc
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @param Categorie $categorie
+     * @return Assoc
+     */
+    public function addCategory(Categorie $categorie): self
+    { //magic method: should be written "category" to be detected by easyadmin update
+        if (!$this->categories->contains($categorie)) {
+            $this->categories[] = $categorie;
+            $categorie->setAssocs($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Categorie $categorie): self
+    {
+        if ($this->categories->removeElement($categorie)) {
+            // set the owning side to null (unless already changed)
+            if ($categorie->getAssocs() === $this) {
+                $categorie->setAssocs(null);
+            }
+        }
+
+        return $this;
     }
 
 }

@@ -37,12 +37,16 @@ class AssocCrudController extends AbstractCrudController
             TextField::new('latitude'),
 
             FormField::addPanel('Options'),
-            AssociationField::new('sousCategories')
+            AssociationField::new('categories')
                 ->setRequired(true)
+                ->setLabel('Catégories')
+                ->setFormTypeOptions(['by_reference' => false]),
+            AssociationField::new('sousCategories')
+                ->setRequired(false)
                 ->setLabel('Sous-catégories')
                 ->setFormTypeOptions(['by_reference' => false]),
-            BooleanField::new('homme'),
-            BooleanField::new('femme'),
+            BooleanField::new('homme')->hideOnForm(),
+            BooleanField::new('femme')->hideOnForm(),
             BooleanField::new('chien'),
             BooleanField::new('handicap'),
 

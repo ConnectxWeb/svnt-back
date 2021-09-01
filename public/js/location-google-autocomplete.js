@@ -13,7 +13,7 @@ function initializeAutocompleteById(id) {
 }
 
 function onPlaceChanged() {
-    // var place = this.getPlace();
+    // const place = this.getPlace();
     // console.log(place);  // Uncomment this line to view the full object returned by Google API.
 }
 

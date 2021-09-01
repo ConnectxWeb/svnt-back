@@ -37,10 +37,17 @@ class Categorie
     private $nom;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Assoc", inversedBy="categories", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="assoc_id", referencedColumnName="id", nullable=true, onDelete="CASCADE")
+     */
+    private $assocs;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\SousCategorie", mappedBy="categorie")
      * @Groups({"categorie:read"})
      */
     private $sousCategories;
+
 
     public function __construct()
     {
@@ -97,5 +104,21 @@ class Categorie
     public function __toString()
     {
         return $this->getNom();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAssocs()
+    {
+        return $this->assocs;
+    }
+
+    /**
+     * @param mixed $assocs
+     */
+    public function setAssocs($assocs): void
+    {
+        $this->assocs = $assocs;
     }
 }
