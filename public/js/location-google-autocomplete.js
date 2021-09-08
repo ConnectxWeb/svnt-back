@@ -13,8 +13,17 @@ function initializeAutocompleteById(id) {
 }
 
 function onPlaceChanged() {
-    // const place = this.getPlace();
-    // console.log(place);  // Uncomment this line to view the full object returned by Google API.
+    const place = this.getPlace();
+    console.log(place);
+    if (!place.geometry || !place.geometry.location) {
+        // User entered the name of a Place that was not suggested and
+        // pressed the Enter key, or the Place Details request failed.
+        window.alert("No GPS location available for input: '" + place.name + "'");
+        return;
+    }
+    document.getElementById("Assoc_longitude").value = place.geometry.location.lng();
+    document.getElementById("Assoc_latitude").value = place.geometry.location.lat();
+
 }
 
 google.maps.event.addDomListener(window, 'load', function () {
