@@ -37,8 +37,7 @@ class Categorie
     private $nom;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Assoc", inversedBy="categories", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="assoc_id", referencedColumnName="id", nullable=true, onDelete="CASCADE")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Assoc", mappedBy="categories", orphanRemoval=true, cascade={"persist"})
      */
     private $assocs;
 
@@ -56,6 +55,7 @@ class Categorie
 
     public function __construct()
     {
+        $this->assocs = new ArrayCollection();
         $this->sousCategories = new ArrayCollection();
     }
 

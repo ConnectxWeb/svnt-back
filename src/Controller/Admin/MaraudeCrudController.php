@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Maraude;
+use App\Form\CategoriesType;
 use App\Form\OuvertureType;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;

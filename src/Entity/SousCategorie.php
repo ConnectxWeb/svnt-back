@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\SousCategorieRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -17,12 +18,14 @@ class SousCategorie
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     *
      * @Groups({"categorie:read", "ville:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
      * @Groups({"categorie:read", "ville:read"})
      */
     private $nom;
@@ -30,21 +33,27 @@ class SousCategorie
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Categorie", inversedBy="sousCategories")
      * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
+     *
      * @Groups({"categorie:read", "ville:read"})
      */
     private $categorie;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Assoc", inversedBy="sousCategories", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="assoc_id", referencedColumnName="id", nullable=true, onDelete="CASCADE")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Assoc", mappedBy="sousCategories", orphanRemoval=true, cascade={"persist"})
      */
     private $assocs;
 
     /**
      * @ORM\Column(type="integer", options={"default"="999", "unsigned"=true})
+     *
      * @Groups({"categorie:read", "ville:read"})
      */
     private $ordre;
+
+    public function __construct()
+    {
+        $this->assocs = new ArrayCollection();
+    }
 
 
     public function getId(): ?int

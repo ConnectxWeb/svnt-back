@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Assoc;
+use App\Entity\Categorie;
+use App\Form\CategoriesType;
 use App\Form\OuvertureType;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -41,11 +43,11 @@ class AssocCrudController extends AbstractCrudController
             AssociationField::new('categories')
                 ->setRequired(true)
                 ->setLabel('Catégories')
-                ->setFormTypeOptions(['by_reference' => false]),
+                ->setFormTypeOptions(['by_reference' => true]),
             AssociationField::new('sousCategories')
                 ->setRequired(false)
                 ->setLabel('Sous-catégories')
-                ->setFormTypeOptions(['by_reference' => false]),
+                ->setFormTypeOptions(['by_reference' => true]),
             BooleanField::new('homme')->hideOnForm(),
             BooleanField::new('femme')->hideOnForm(),
             BooleanField::new('chien'),
