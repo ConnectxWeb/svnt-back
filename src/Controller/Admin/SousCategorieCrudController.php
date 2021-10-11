@@ -28,17 +28,15 @@ class SousCategorieCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-//            AssociationField::new('ville'),
             AssociationField::new('categorie'),
             TextField::new('nom'),
-            ImageField::new('pictoFileName')
-//                ->setBasePath('upload')
-                ->setUploadDir('/public/upload')
+            ImageField::new('logoFilename', 'Logo')
+                ->setBasePath(SousCategorie::PICTO_PATH)
+                ->setUploadDir('/public' . SousCategorie::PICTO_PATH)
                 ->setFormType(FileUploadType::class)
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
                 ->setRequired(false),
             IntegerField::new('ordre', '(Défaut 999, 0,1,2,3.. en premier)'),
-//            TextEditorField::new('description'),
         ];
     }
 

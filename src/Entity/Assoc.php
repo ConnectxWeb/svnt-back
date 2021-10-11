@@ -392,7 +392,7 @@ class Assoc
     }
 
     public function addSousCategory(SousCategorie $sousCategorie
-    ): self //magic method: should be written "category" to be detected by easyadmin update
+    ): self //magic method: must be written "category" to be detected by easyadmin update
     {
         if (!$this->sousCategories->contains($sousCategorie)) {
             $this->sousCategories[] = $sousCategorie;

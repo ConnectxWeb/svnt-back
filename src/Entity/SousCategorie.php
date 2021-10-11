@@ -9,15 +9,15 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=SousCategorieRepository::class)
- * @Vich\Uploadable()
  */
 class SousCategorie
 {
+    const PICTO_PATH = '/upload/subCat';
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -46,6 +46,7 @@ class SousCategorie
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Assoc", mappedBy="sousCategories", orphanRemoval=true, cascade={"persist"})
+     * @var Collection
      */
     private $assocs;
 
@@ -61,12 +62,7 @@ class SousCategorie
      *
      * @Groups({"categorie:read", "ville:read"})
      */
-    private $pictoPath;
-
-    /**
-     * @Vich\UploadableField(mapping="subCatPicto", fileNameProperty="pictoPath")
-     */
-    private $pictoFile;
+    private $logoFilename;
 
 
     public function __construct()
@@ -78,6 +74,14 @@ class SousCategorie
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * Groups({"categorie:read", "ville:read"})
+     */
+    public function getApiLogo(): ?string
+    {
+        return self::PICTO_PATH . '/' . $this->getLogoFilename();
     }
 
     public function getNom(): ?string
@@ -104,12 +108,15 @@ class SousCategorie
         return $this;
     }
 
-    public function getAssocs(): ArrayCollection
+    /**
+     * @return Collection
+     */
+    public function getAssocs(): ?Collection
     {
         return $this->assocs;
     }
 
-    public function setAssocs(?Assoc $assocs): self
+    public function setAssocs(?Collection $assocs): self
     {
         $this->assocs = $assocs;
 
@@ -140,36 +147,17 @@ class SousCategorie
     /**
      * @return mixed
      */
-    public function getPictoPath()
+    public function getLogoFilename()
     {
-        return $this->pictoPath;
+        return $this->logoFilename;
     }
 
     /**
-     * @param mixed $pictoPath
+     * @param mixed $logoFilename
      */
-    public function setPictoPath($pictoPath): void
+    public function setLogoFilename($logoFilename): void
     {
-        $this->pictoPath = $pictoPath;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPictoFile()
-    {
-        return $this->pictoFile;
-    }
-
-    /**
-     * @param mixed $pictoFile
-     */
-    public function setPictoFile($pictoFile): void
-    {
-        $this->pictoFile = $pictoFile;
-        if ($pictoFile) {
-            $this->refreshUpdatedAt();
-        }
+        $this->logoFilename = $logoFilename;
     }
 
     public function addAssoc(Assoc $assoc): self

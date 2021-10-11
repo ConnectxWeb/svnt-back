@@ -7,8 +7,8 @@ echo "##########################################################################
 #git pull
 
 echo "Delete .env.local & .env.test if existing"
-rm -rf .env.local
-rm -rf .env.test
+rm -f .env.local
+rm -f .env.test
 
 echo "Backup DB"
 mysqldump --no-tablespaces --host=svntfrkroot.mysql.db --user=svntfrkroot --port=3306 --password=ds654fds54fhgj789A svntfrkroot >./_backup/db/backup_$(date +%Y-%m-%d-%H.%M.%S).sql
