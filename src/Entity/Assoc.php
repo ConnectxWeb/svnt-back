@@ -203,6 +203,7 @@ class Assoc
         $this->ouverture = new ArrayCollection();
         $this->categories = new ArrayCollection();
         $this->sousCategories = new ArrayCollection();
+        $this->maraudes = new ArrayCollection();
     }
 
     public function __toString()
@@ -449,6 +450,28 @@ class Assoc
             // set the owning side to null (unless already changed)
             if ($categorie->getAssocs() === $this) {
                 $categorie->setAssocs(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function addMaraude(Maraude $maraude): self
+    {
+        if (!$this->maraudes->contains($maraude)) {
+            $this->maraudes[] = $maraude;
+            $maraude->setAssoc($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMaraude(Maraude $maraude): self
+    {
+        if ($this->maraudes->removeElement($maraude)) {
+            // set the owning side to null (unless already changed)
+            if ($maraude->getAssoc() === $this) {
+                $maraude->setAssoc(null);
             }
         }
 

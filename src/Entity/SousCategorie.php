@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\SousCategorieRepository;
 use App\Service\Generic\Entity\EntityBaseTrait;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -169,5 +170,24 @@ class SousCategorie
         if ($pictoFile) {
             $this->refreshUpdatedAt();
         }
+    }
+
+    public function addAssoc(Assoc $assoc): self
+    {
+        if (!$this->assocs->contains($assoc)) {
+            $this->assocs[] = $assoc;
+            $assoc->addSousCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAssoc(Assoc $assoc): self
+    {
+        if ($this->assocs->removeElement($assoc)) {
+            $assoc->removeSousCategory($this);
+        }
+
+        return $this;
     }
 }

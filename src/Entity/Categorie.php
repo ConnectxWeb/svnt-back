@@ -142,4 +142,45 @@ class Categorie
     {
         $this->ordre = $ordre;
     }
+
+    public function addAssoc(Assoc $assoc): self
+    {
+        if (!$this->assocs->contains($assoc)) {
+            $this->assocs[] = $assoc;
+            $assoc->addCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAssoc(Assoc $assoc): self
+    {
+        if ($this->assocs->removeElement($assoc)) {
+            $assoc->removeCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function addSousCategory(SousCategorie $sousCategory): self
+    {
+        if (!$this->sousCategories->contains($sousCategory)) {
+            $this->sousCategories[] = $sousCategory;
+            $sousCategory->setCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSousCategory(SousCategorie $sousCategory): self
+    {
+        if ($this->sousCategories->removeElement($sousCategory)) {
+            // set the owning side to null (unless already changed)
+            if ($sousCategory->getCategorie() === $this) {
+                $sousCategory->setCategorie(null);
+            }
+        }
+
+        return $this;
+    }
 }

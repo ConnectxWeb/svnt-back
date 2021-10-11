@@ -5,6 +5,8 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Service\Generic\Entity\EntityBaseTrait;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
@@ -51,6 +53,11 @@ class Ville
      */
     private $assocs;
 
+    public function __construct()
+    {
+        $this->assocs = new ArrayCollection();
+    }
+
     public function getNom(): ?string
     {
         return $this->nom;
@@ -90,5 +97,27 @@ class Ville
     public function getId()
     {
         return $this->id;
+    }
+
+    public function addAssoc(Assoc $assoc): self
+    {
+        if (!$this->assocs->contains($assoc)) {
+            $this->assocs[] = $assoc;
+            $assoc->setVille($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAssoc(Assoc $assoc): self
+    {
+        if ($this->assocs->removeElement($assoc)) {
+            // set the owning side to null (unless already changed)
+            if ($assoc->getVille() === $this) {
+                $assoc->setVille(null);
+            }
+        }
+
+        return $this;
     }
 }
