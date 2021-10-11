@@ -48,7 +48,7 @@ class Categorie
     private $sousCategories;
 
     /**
-     * @ORM\Column(type="integer", options={"default"="999", "unsigned"=true})
+     * @ORM\Column(type="integer", options={"default"="999", "unsigned"=true}, nullable=true)
      * @Groups({"categorie:read", "ville:read"})
      */
     private $ordre;

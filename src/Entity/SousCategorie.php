@@ -4,13 +4,16 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\SousCategorieRepository;
+use App\Service\Generic\Entity\EntityBaseTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=SousCategorieRepository::class)
+ * @Vich\Uploadable()
  */
 class SousCategorie
 {
@@ -22,6 +25,8 @@ class SousCategorie
      * @Groups({"categorie:read", "ville:read"})
      */
     private $id;
+
+    use EntityBaseTrait;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -44,18 +49,24 @@ class SousCategorie
     private $assocs;
 
     /**
-     * @ORM\Column(type="integer", options={"default"="999", "unsigned"=true})
+     * @ORM\Column(type="integer", options={"default"="999", "unsigned"=true}, nullable=true)
      *
      * @Groups({"categorie:read", "ville:read"})
      */
     private $ordre;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @Groups({"categorie:read", "ville:read"})
      */
-    private $pictoFileName;
+    private $pictoPath;
+
+    /**
+     * @Vich\UploadableField(mapping="subCatPicto", fileNameProperty="pictoPath")
+     */
+    private $pictoFile;
+
 
     public function __construct()
     {
@@ -128,16 +139,35 @@ class SousCategorie
     /**
      * @return mixed
      */
-    public function getPictoFileName()
+    public function getPictoPath()
     {
-        return $this->pictoFileName;
+        return $this->pictoPath;
     }
 
     /**
-     * @param mixed $pictoFileName
+     * @param mixed $pictoPath
      */
-    public function setPictoFileName($pictoFileName): void
+    public function setPictoPath($pictoPath): void
     {
-        $this->pictoFileName = $pictoFileName;
+        $this->pictoPath = $pictoPath;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPictoFile()
+    {
+        return $this->pictoFile;
+    }
+
+    /**
+     * @param mixed $pictoFile
+     */
+    public function setPictoFile($pictoFile): void
+    {
+        $this->pictoFile = $pictoFile;
+        if ($pictoFile) {
+            $this->refreshUpdatedAt();
+        }
     }
 }
