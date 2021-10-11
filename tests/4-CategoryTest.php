@@ -71,12 +71,17 @@ class CategoryTest extends UnitBase
 
         $this->pushMessage(sprintf('Category "%s" added.', $nom));
 
+        $sub = null;
         for ($i = 1; $i <= $this->faker->numberBetween(1, 3); $i++) {
             $sub = $this->addSubCategory($category);
         }
 
-        $assoc = $this->repoService->getAssocRepository()->findRandomAssoc();
-        $assoc->addSousCategory($sub);
+//        if ($sub !== null) {
+//            $assoc = $this->repoService->getAssocRepository()->findRandomAssoc();
+//            $assoc->addSousCategory($sub);
+//            $this->entityManager->persist($assoc);
+//            $this->entityManager->flush();
+//        }
 
         return true;
     }
@@ -90,6 +95,7 @@ class CategoryTest extends UnitBase
         $sub->setNom($nom);
 
         $this->entityManager->persist($sub);
+        $this->entityManager->flush();
 
         return $sub;
     }

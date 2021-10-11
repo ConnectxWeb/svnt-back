@@ -29,3 +29,8 @@
 /symfony.lock
 /.php_cs.dist
 /.env
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
