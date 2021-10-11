@@ -50,6 +50,13 @@ class SousCategorie
      */
     private $ordre;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @Groups({"categorie:read", "ville:read"})
+     */
+    private $pictoFileName;
+
     public function __construct()
     {
         $this->assocs = new ArrayCollection();
@@ -85,7 +92,7 @@ class SousCategorie
         return $this;
     }
 
-    public function getAssocs(): ?Assoc
+    public function getAssocs(): ArrayCollection
     {
         return $this->assocs;
     }
@@ -116,5 +123,21 @@ class SousCategorie
     public function setOrdre($ordre): void
     {
         $this->ordre = $ordre;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPictoFileName()
+    {
+        return $this->pictoFileName;
+    }
+
+    /**
+     * @param mixed $pictoFileName
+     */
+    public function setPictoFileName($pictoFileName): void
+    {
+        $this->pictoFileName = $pictoFileName;
     }
 }
