@@ -35,3 +35,4 @@
 .phpunit.result.cache
 ###< phpunit/phpunit ###
 /public/upload/subCat/
+/public/upload/

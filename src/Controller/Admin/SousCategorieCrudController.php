@@ -31,8 +31,8 @@ class SousCategorieCrudController extends AbstractCrudController
             AssociationField::new('categorie'),
             TextField::new('nom'),
             ImageField::new('logoFilename', 'Logo')
-                ->setBasePath(SousCategorie::PICTO_PATH)
-                ->setUploadDir('/public' . SousCategorie::PICTO_PATH)
+                ->setBasePath(SousCategorie::LOGO_PATH)
+                ->setUploadDir('/public' . SousCategorie::LOGO_PATH)
                 ->setFormType(FileUploadType::class)
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
                 ->setRequired(false),

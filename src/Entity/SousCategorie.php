@@ -16,7 +16,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class SousCategorie
 {
-    const PICTO_PATH = '/upload/subCat';
+    const LOGO_PATH = '/upload/subCat';
 
     /**
      * @ORM\Id
@@ -59,8 +59,6 @@ class SousCategorie
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     *
-     * @Groups({"categorie:read", "ville:read"})
      */
     private $logoFilename;
 
@@ -70,18 +68,21 @@ class SousCategorie
         $this->assocs = new ArrayCollection();
     }
 
-
     public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * Groups({"categorie:read", "ville:read"})
+     * @Groups({"categorie:read", "ville:read"})
      */
-    public function getApiLogo(): ?string
+    public function getApiLogo(): ?string //for front
     {
-        return self::PICTO_PATH . '/' . $this->getLogoFilename();
+        if ($this->getLogoFilename() !== null) {
+            return self::LOGO_PATH . '/' . $this->getLogoFilename();
+        }
+
+        return null;
     }
 
     public function getNom(): ?string

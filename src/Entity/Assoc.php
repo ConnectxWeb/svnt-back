@@ -32,6 +32,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class Assoc
 {
+    const LOGO_PATH = '/upload/assoc';
+
     /**
      * @ORM\Id
      * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned"=true})
@@ -196,8 +198,11 @@ class Assoc
     private $sousCategories;
 
     /**
-     * Constructor
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
+    private $logoFilename;
+
+
     public function __construct()
     {
         $this->ouverture = new ArrayCollection();
@@ -209,6 +214,18 @@ class Assoc
     public function __toString()
     {
         return $this->nom;
+    }
+
+    /**
+     * @Groups({"assoc:read", "ville:read"})
+     */
+    public function getApiLogo(): ?string //for front
+    {
+        if ($this->getLogoFilename() !== null) {
+            return self::LOGO_PATH . '/' . $this->getLogoFilename();
+        }
+
+        return null;
     }
 
     public function getNom(): ?string
@@ -476,6 +493,22 @@ class Assoc
         }
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLogoFilename()
+    {
+        return $this->logoFilename;
+    }
+
+    /**
+     * @param mixed $logoFilename
+     */
+    public function setLogoFilename($logoFilename): void
+    {
+        $this->logoFilename = $logoFilename;
     }
 
 }

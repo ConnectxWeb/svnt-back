@@ -22,6 +22,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class Categorie
 {
+    const LOGO_PATH = '/upload/cat';
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -53,10 +54,27 @@ class Categorie
      */
     private $ordre;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $logoFilename;
+
     public function __construct()
     {
         $this->assocs = new ArrayCollection();
         $this->sousCategories = new ArrayCollection();
+    }
+
+    /**
+     * @Groups({"categorie:read", "ville:read"})
+     */
+    public function getApiLogo(): ?string //for front
+    {
+        if ($this->getLogoFilename() !== null) {
+            return self::LOGO_PATH . '/' . $this->getLogoFilename();
+        }
+
+        return null;
     }
 
     public function getId(): ?int
@@ -182,5 +200,21 @@ class Categorie
         }
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLogoFilename()
+    {
+        return $this->logoFilename;
+    }
+
+    /**
+     * @param mixed $logoFilename
+     */
+    public function setLogoFilename($logoFilename): void
+    {
+        $this->logoFilename = $logoFilename;
     }
 }

@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Assoc;
 use App\Entity\Categorie;
+use App\Entity\SousCategorie;
 use App\Form\CategoriesType;
 use App\Form\OuvertureType;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -12,10 +13,12 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType;
 
 
 class AssocCrudController extends AbstractCrudController
@@ -33,6 +36,12 @@ class AssocCrudController extends AbstractCrudController
             TextField::new('nom'),
             TextEditorField::new('description'),
             TelephoneField::new('telephone'),
+            ImageField::new('logoFilename', 'Logo')
+                ->setBasePath(Assoc::LOGO_PATH)
+                ->setUploadDir('/public' . Assoc::LOGO_PATH)
+                ->setFormType(FileUploadType::class)
+                ->setUploadedFileNamePattern('[randomhash].[extension]')
+                ->setRequired(false),
 
             FormField::addPanel('Adresse'),
             TextField::new('adresse')->setCssClass('toto')->addCssClass('map-input'),
