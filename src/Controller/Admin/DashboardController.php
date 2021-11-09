@@ -30,7 +30,7 @@ class DashboardController extends AbstractDashboardController
     }
 
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/", name="admin")
      */
     public function index(): Response
     {
@@ -53,15 +53,18 @@ class DashboardController extends AbstractDashboardController
     {
 //        yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
 
-        yield MenuItem::linkToCrud('Association', 'fas fa-list', Assoc::class);
-        yield MenuItem::linkToCrud('Maraude', 'fas fa-list', Maraude::class);
+        yield MenuItem::linkToCrud('Association', 'fas fa-arrow-alt-circle-right', Assoc::class);
+        yield MenuItem::linkToCrud('Maraude', 'far fa-arrow-alt-circle-right', Maraude::class);
 //        yield MenuItem::linkToCrud('Ouverture', 'fas fa-list', Ouverture::class);
 
         yield MenuItem::section('Admin');
         yield MenuItem::linkToCrud('Catégorie', 'fas fa-list', Categorie::class);
-        yield MenuItem::linkToCrud('Sous-catégorie', 'fas fa-list', SousCategorie::class);
-        yield MenuItem::linkToCrud('Ville', 'fas fa-list', Ville::class);
-        yield MenuItem::linkToCrud('User', 'fas fa-list', User::class);
+        yield MenuItem::linkToCrud('Sous-catégorie', 'fas fa-list-alt', SousCategorie::class);
+        yield MenuItem::linkToCrud('Ville', 'fas fa-city', Ville::class);
+        yield MenuItem::linkToCrud('User', 'fas fa-users', User::class);
+
+        yield MenuItem::section('API');
+        yield MenuItem::linkToUrl('API docs', 'fas fa-server', '/api/docs');
 
         yield MenuItem::section('User');
         if ($this->getUser() !== null) {
