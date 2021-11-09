@@ -38,6 +38,12 @@ class Categorie
     private $nom;
 
     /**
+     * @ORM\Column(type="text")
+     * @Groups({"categorie:read", "ville:read"})
+     */
+    private $html;
+
+    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Assoc", mappedBy="categories", orphanRemoval=true, cascade={"persist"})
      */
     private $assocs;
@@ -216,5 +222,21 @@ class Categorie
     public function setLogoFilename($logoFilename): void
     {
         $this->logoFilename = $logoFilename;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHtml()
+    {
+        return $this->html;
+    }
+
+    /**
+     * @param mixed $html
+     */
+    public function setHtml($html): void
+    {
+        $this->html = $html;
     }
 }

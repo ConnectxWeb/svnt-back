@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {# {% block fos_user_content %}{% endblock fos_user_content %} #}
+    {# {% error = '' %} #}
+    {# {% include "@FOSUser/Security/login_content.html.twig" with {'error': ''} %} #}
+    {{ render(controller("FOSUserBundle:Security:login", { 'call' : 'action' })) }}
+{% endblock %}

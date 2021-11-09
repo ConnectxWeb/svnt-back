@@ -61,16 +61,16 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Catégorie', 'fas fa-list', Categorie::class);
         yield MenuItem::linkToCrud('Sous-catégorie', 'fas fa-list-alt', SousCategorie::class);
         yield MenuItem::linkToCrud('Ville', 'fas fa-city', Ville::class);
-        yield MenuItem::linkToCrud('User', 'fas fa-users', User::class);
+        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-users', User::class);
 
         yield MenuItem::section('API');
         yield MenuItem::linkToUrl('API docs', 'fas fa-server', '/api/docs');
 
-        yield MenuItem::section('User');
+        yield MenuItem::section('Session');
         if ($this->getUser() !== null) {
-            yield MenuItem::linkToLogout('Logout', 'fa fa-sign-out');
+            yield MenuItem::linkToLogout('Déconnexion', 'fa fa-sign-out');
         } else {
-            yield MenuItem::linktoRoute('Login', 'fa fa-id-card', 'fos_user_security_login');
+            yield MenuItem::linktoRoute('Connexion', 'fa fa-id-card', 'fos_user_security_login');
         }
     }
 

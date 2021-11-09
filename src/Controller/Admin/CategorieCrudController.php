@@ -53,6 +53,8 @@ class CategorieCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('nom'),
+            TextEditorField::new('html', "HTML (si renseigné affiche l'HTML au lieu d'une catégorie)")
+                ->setRequired(false),
             ImageField::new('logoFilename', 'Logo')
                 ->setBasePath(Categorie::LOGO_PATH)
                 ->setUploadDir('/public' . Categorie::LOGO_PATH)
