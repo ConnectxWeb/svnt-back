@@ -34,6 +34,7 @@ class MaraudeCrudController extends AbstractCrudController
             TextField::new('latitude'),
 
             CollectionField::new('ouverture')
+                ->renderExpanded()
                 ->allowAdd()
                 ->allowDelete()
                 ->setEntryIsComplex(true)

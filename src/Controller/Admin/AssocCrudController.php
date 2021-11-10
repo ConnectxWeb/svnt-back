@@ -71,6 +71,7 @@ class AssocCrudController extends AbstractCrudController
 
             FormField::addPanel('Horaires'),
             CollectionField::new('ouverture')
+                ->renderExpanded()
                 ->allowAdd()
                 ->allowDelete()
                 ->setEntryIsComplex(true)
