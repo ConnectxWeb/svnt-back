@@ -45,7 +45,7 @@ security:
     - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     #    - { path: ^/account, roles: IS_AUTHENTICATED_ANONYMOUSLY } #to reset password
     #    - { path: ^/users, roles: IS_AUTHENTICATED_ANONYMOUSLY , methods: [POST] } #to create user
-    - { path: ^/api/docs, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    #    - { path: ^/api/docs, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/api, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/authentication_token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/, role: ROLE_ADMIN }

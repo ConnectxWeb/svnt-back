@@ -19,6 +19,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
 
 class AssocCrudController extends AbstractCrudController
@@ -26,6 +27,12 @@ class AssocCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return Assoc::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->showEntityActionsInlined();
     }
 
     public function configureFields(string $pageName): iterable

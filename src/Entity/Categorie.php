@@ -38,7 +38,7 @@ class Categorie
     private $nom;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      * @Groups({"categorie:read", "ville:read"})
      */
     private $html;

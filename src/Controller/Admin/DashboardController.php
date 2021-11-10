@@ -30,10 +30,15 @@ class DashboardController extends AbstractDashboardController
     }
 
     /**
-     * @Route("/", name="admin")
+     * @Route("/", name="admin_index")
      */
     public function index(): Response
     {
+        // redirect to some CRUD controller
+        $routeBuilder = $this->get(AdminUrlGenerator::class);
+
+        return $this->redirect($routeBuilder->setController(AssocCrudController::class)->generateUrl());
+
         // redirect to some CRUD controller
 //        $routeBuilder = $this->get(CrudUrlGenerator::class)->build();
         return $this->redirect($this->adminUrlGenerator->setController(AssocCrudController::class)->generateUrl());
@@ -46,25 +51,28 @@ class DashboardController extends AbstractDashboardController
             ->setTitle('Backoffice Pratik')
             // set this option if you prefer the page content to span the entire
             // browser width, instead of the default design which sets a max width
-            ->renderContentMaximized();
+            ->renderContentMaximized()
+            ->disableUrlSignatures();
     }
 
     public function configureMenuItems(): iterable
     {
-//        yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
-
-        yield MenuItem::linkToCrud('Association', 'fas fa-arrow-alt-circle-right', Assoc::class);
-        yield MenuItem::linkToCrud('Maraude', 'far fa-arrow-alt-circle-right', Maraude::class);
-//        yield MenuItem::linkToCrud('Ouverture', 'fas fa-list', Ouverture::class);
+        yield MenuItem::linkToCrud('Association', 'fas fa-arrow-alt-circle-right', Assoc::class)
+            ->setDefaultSort(['id' => 'DESC']);
+        yield MenuItem::linkToCrud('Maraude', 'far fa-arrow-alt-circle-right', Maraude::class)
+            ->setDefaultSort(['id' => 'DESC']);
 
         yield MenuItem::section('Admin');
-        yield MenuItem::linkToCrud('Catégorie', 'fas fa-list', Categorie::class);
-        yield MenuItem::linkToCrud('Sous-catégorie', 'fas fa-list-alt', SousCategorie::class);
+        yield MenuItem::linkToCrud('Catégorie', 'fas fa-list', Categorie::class)
+            ->setDefaultSort(['ordre' => 'ASC']);
+        yield MenuItem::linkToCrud('Sous-catégorie', 'fas fa-list-alt', SousCategorie::class)
+            ->setDefaultSort(['ordre' => 'ASC']);
         yield MenuItem::linkToCrud('Ville', 'fas fa-city', Ville::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-users', User::class);
 
         yield MenuItem::section('API');
-        yield MenuItem::linkToUrl('API docs', 'fas fa-server', '/api/docs');
+        yield MenuItem::linkToUrl('API docs', 'fas fa-server', '/api/docs')
+            ->setLinkTarget('_blank');
 
         yield MenuItem::section('Session');
         if ($this->getUser() !== null) {
@@ -72,6 +80,8 @@ class DashboardController extends AbstractDashboardController
         } else {
             yield MenuItem::linktoRoute('Connexion', 'fa fa-id-card', 'fos_user_security_login');
         }
+
+//        yield MenuItem::linkToLogout('Logout', 'fa fa-exit');
     }
 
     public function configureAssets(): Assets
