@@ -54,8 +54,7 @@ class GpxCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            AssociationField::new('ville')
-                ->setRequired(true),
+            AssociationField::new('ville'),
             TextField::new('titre', "Titre (qui sera affiché lorsque l'on clique sur le marqueur)")
                 ->setRequired(true),
             ImageField::new('gpxFile', 'Fichier GPX')
