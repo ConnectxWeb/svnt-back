@@ -33,13 +33,11 @@ class CustomQueryController extends AbstractController
      */
     public function findAssocs(Request $r)
     {
-        // http://svnt.loc/api/findAssocs?villeId=2&homme=1&femme=1&chien=1&handicap=1
+        // http://svnt.loc/api/findAssocs?villeId=2&chien=1&handicap=1
         $villeId = $r->get('villeId');
-        $homme = $r->get('homme');
-        $femme = $r->get('femme');
         $chien = $r->get('chien');
         $handicap = $r->get('handicap');
-        $assocs = $this->repoService->getAssocRepository()->findCustom($villeId, $homme, $femme, $chien, $handicap);
+        $assocs = $this->repoService->getAssocRepository()->findCustom($villeId, $chien, $handicap);
 
         return $assocs;
     }

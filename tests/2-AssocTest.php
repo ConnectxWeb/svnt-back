@@ -61,8 +61,6 @@ class AssocTest extends UnitBase
         $assoc->setLongitude($this->faker->longitude);
         $assoc->setLatitude($this->faker->latitude);
 
-        $assoc->setHomme($this->faker->boolean);
-        $assoc->setFemme($this->faker->boolean);
         $assoc->setChien($this->faker->boolean);
         $assoc->setHandicap($this->faker->boolean);
 

@@ -52,8 +52,10 @@ class AssocCrudController extends AbstractCrudController
 
             FormField::addPanel('Adresse'),
             TextField::new('adresse')->setCssClass('toto')->addCssClass('map-input'),
-            TextField::new('longitude'),
-            TextField::new('latitude'),
+            TextField::new('longitude')
+                ->onlyOnForms(),
+            TextField::new('latitude')
+                ->onlyOnForms(),
 
             FormField::addPanel('Options'),
             AssociationField::new('categories')
@@ -64,10 +66,10 @@ class AssocCrudController extends AbstractCrudController
                 ->setRequired(false)
                 ->setLabel('Sous-catégories')
                 ->setFormTypeOptions(['by_reference' => true]),
-            BooleanField::new('homme')->hideOnForm(),
-            BooleanField::new('femme')->hideOnForm(),
-            BooleanField::new('chien'),
-            BooleanField::new('handicap'),
+            BooleanField::new('chien')
+                ->onlyOnForms(),
+            BooleanField::new('handicap')
+                ->onlyOnForms(),
 
             FormField::addPanel('Horaires'),
             CollectionField::new('ouverture')

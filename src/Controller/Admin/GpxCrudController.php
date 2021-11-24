@@ -110,12 +110,19 @@ class GpxCrudController extends AbstractCrudController
         try {
             $gpxParser = new phpGPX();
             $gpxFile = $gpxParser->load($request->server->get('DOCUMENT_ROOT') . $gpx->getApiGpxFile());
-            $gpx->setIsValid(true);
+            if (count($gpxFile->waypoints) === 0 && count($gpxFile->routes) === 0 && count($gpxFile->tracks) === 0) {
+                $gpx->setIsValid(false);
+                $session->getFlashBag()->add(BootstrapType::WARNING,
+                    sprintf("<h2>Fichier GPX non valide (il ne contient auncune information à afficher)</h2>Nom: %s<br>Description: %s<br>Créateur: %s",
+                        $gpxFile->metadata->name, $gpxFile->metadata->description, $gpxFile->creator));
+            } else {
+                $gpx->setIsValid(true);
+                $session->getFlashBag()->add(BootstrapType::SUCCESS,
+                    sprintf("<h2>Fichier GPX validé</h2>Nom: %s<br>Description: %s<br>Créateur: %s<br>Waypoints: %s<br>Routes: %s<br>Tracks: %s",
+                        $gpxFile->metadata->name, $gpxFile->metadata->description, $gpxFile->creator,
+                        count($gpxFile->waypoints), count($gpxFile->routes), count($gpxFile->tracks)));
+            }
             $this->getDoctrine()->getManager()->flush();
-            $session->getFlashBag()->add(BootstrapType::SUCCESS,
-                sprintf("<h2>Fichier GPX validé</h2>Nom: %s<br>Description: %s<br>Créateur: %s<br>Waypoints: %s<br>Routes: %s<br>Tracks: %s",
-                    $gpxFile->metadata->name, $gpxFile->metadata->description, $gpxFile->creator,
-                    count($gpxFile->waypoints), count($gpxFile->routes), count($gpxFile->tracks)));
         } catch (\Exception $e) {
             $session->getFlashBag()->add(BootstrapType::DANGER, $e->getMessage());
         }

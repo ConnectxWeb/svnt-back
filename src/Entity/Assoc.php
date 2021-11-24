@@ -25,7 +25,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     }
  * )
  * @ApiFilter(SearchFilter::class, properties={"nom": "exact"})
- * @ApiFilter(BooleanFilter::class, properties={"homme", "femme", "chien", "handicap"})
+ * @ApiFilter(BooleanFilter::class, properties={"chien", "handicap"})
  *
  * @ORM\Table(name="assoc", indexes={@ORM\Index(name="fk_assoc_ville", columns={"ville_id"})})
  * @ORM\Entity(repositoryClass="App\Repository\AssocRepository")
@@ -98,24 +98,6 @@ class Assoc
      * @Groups({"assoc:read", "ville:read"})
      */
     private $latitude;
-
-    /**
-     * @var bool|null
-     *
-     * @ORM\Column(name="homme", type="boolean", nullable=true)
-     *
-     * @Groups({"assoc:read", "ville:read"})
-     */
-    private $homme;
-
-    /**
-     * @var bool|null
-     *
-     * @ORM\Column(name="femme", type="boolean", nullable=true)
-     *
-     * @Groups({"assoc:read", "ville:read"})
-     */
-    private $femme;
 
     /**
      * @var bool|null
@@ -296,30 +278,6 @@ class Assoc
     public function setLatitude(?string $latitude): self
     {
         $this->latitude = $latitude;
-
-        return $this;
-    }
-
-    public function getHomme(): ?bool
-    {
-        return $this->homme;
-    }
-
-    public function setHomme(?bool $homme): self
-    {
-        $this->homme = $homme;
-
-        return $this;
-    }
-
-    public function getFemme(): ?bool
-    {
-        return $this->femme;
-    }
-
-    public function setFemme(?bool $femme): self
-    {
-        $this->femme = $femme;
 
         return $this;
     }
