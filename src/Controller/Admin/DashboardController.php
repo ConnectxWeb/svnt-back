@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Assoc;
 use App\Entity\Categorie;
+use App\Entity\Gpx;
 use App\Entity\Maraude;
 use App\Entity\SousCategorie;
 use App\Entity\User;
@@ -67,6 +68,8 @@ class DashboardController extends AbstractDashboardController
             ->setDefaultSort(['ordre' => 'ASC']);
         yield MenuItem::linkToCrud('Sous-catégorie', 'fas fa-list-alt', SousCategorie::class)
             ->setDefaultSort(['ordre' => 'ASC']);
+        yield MenuItem::linkToCrud('GPX', 'fas fa-map-marker', Gpx::class)
+            ->setDefaultSort(['id' => 'ASC']);
         yield MenuItem::linkToCrud('Ville', 'fas fa-city', Ville::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-users', User::class);
 

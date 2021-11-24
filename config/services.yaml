@@ -22,7 +22,7 @@ services:
   # as action arguments even if you don't extend any base controller class
   App\Controller\:
     resource: '../src/Controller'
-    tags: ['controller.service_arguments']
+    tags: [ 'controller.service_arguments' ]
 
   acme_api.event.jwt_created_listener:
     class: App\EventListener\JWTListener
@@ -38,9 +38,9 @@ services:
   App\Service\AccountMailer:
     arguments:
       $mailer: '@fos_user.mailer.default'
-  App\EventListener\UpdatePriority:
-    tags:
-      - { name: doctrine.event_listener, event: postPersist }
+  #  App\EventListener\UpdatePriority:
+  #    tags:
+  #      - { name: doctrine.event_listener, event: postPersist }
 
   App\Service\RepoService: #for testCase
     public: true

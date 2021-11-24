@@ -23,6 +23,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class Categorie
 {
     const LOGO_PATH = '/upload/cat';
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -55,10 +56,10 @@ class Categorie
     private $sousCategories;
 
     /**
-     * @ORM\Column(type="integer", options={"default"="999", "unsigned"=true}, nullable=true)
+     * @ORM\Column(type="integer", options={"default":"999", "unsigned"=true}, nullable=true)
      * @Groups({"categorie:read", "ville:read"})
      */
-    private $ordre;
+    private $ordre = 999;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)

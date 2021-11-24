@@ -104,7 +104,7 @@ class User extends BaseUser
     /**
      * @var string|null
      *
-     * @ORM\Column(name="lastname", type="string", length=45, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="lastname", type="string", length=45, nullable=true, options={"default":"NULL"})
      * @Groups({"user:read", "user:write"})
      */
     private $lastname;
@@ -112,7 +112,7 @@ class User extends BaseUser
     /**
      * @var string|null
      *
-     * @ORM\Column(name="firstname", type="string", length=45, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="firstname", type="string", length=45, nullable=true, options={"default":"NULL"})
      * @Groups({"user:read", "user:write"})
      */
     private $firstname;
@@ -120,7 +120,7 @@ class User extends BaseUser
     /**
      * @var int|null
      *
-     * @ORM\Column(name="age", type="integer", nullable=true, options={"default"="NULL","unsigned"=true})
+     * @ORM\Column(name="age", type="integer", nullable=true, options={"default":"NULL","unsigned"=true})
      * @Groups({"user:read", "user:write"})
      */
     private $age;
@@ -128,7 +128,7 @@ class User extends BaseUser
     /**
      * @var string|null
      *
-     * @ORM\Column(name="gender", type="string", length=45, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="gender", type="string", length=45, nullable=true, options={"default":"NULL"})
      * @Groups({"user:read", "user:write"})
      */
     private $gender;
@@ -136,7 +136,7 @@ class User extends BaseUser
     /**
      * @var int|null
      *
-     * @ORM\Column(name="region", type="integer", nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="region", type="integer", nullable=true, options={"default":"NULL"})
      * @Groups({"user:read", "user:write"})
      */
     private $region;
@@ -144,7 +144,7 @@ class User extends BaseUser
     /**
      * @var boolean
      *
-     * @ORM\Column(name="newsletter", type="boolean", nullable=true, options={"default"=false})
+     * @ORM\Column(name="newsletter", type="boolean", nullable=true, options={"default":false})
      * @Groups({"user:read", "user:write"})
      */
     private $newsletter;

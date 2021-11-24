@@ -36,6 +36,32 @@
         <env name="APP_ENV" value="test"/>
         <env name="SHELL_VERBOSITY" value="-1"/>
         <server name="KERNEL_CLASS" value="App\Kernel"/>
+
+        <!-- ###+ symfony/framework-bundle ### -->
+        <env name="APP_ENV" value="dev"/>
+        <env name="APP_SECRET" value="c15fc07d15e176d8eb8d58098876d429"/>
+        <!-- env name="TRUSTED_PROXIES" value="127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16" -->
+        <!-- env name="TRUSTED_HOSTS" value="'^(localhost|example\.com)$'" -->
+        <!-- ###- symfony/framework-bundle ### -->
+
+        <!-- ###+ doctrine/doctrine-bundle ### -->
+        <!-- Format described at https://www.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html#connecting-using-a-url -->
+        <!-- IMPORTANT: You MUST configure your server version, either here or in config/packages/doctrine.yaml -->
+        <!--  -->
+        <!-- DATABASE_URL="sqlite:///%kernel.project_dir%/var/data.db" -->
+        <!-- DATABASE_URL="mysql://db_user:db_password@127.0.0.1:3306/db_name?serverVersion=5.7" -->
+        <env name="DATABASE_URL" value="postgresql://db_user:db_password@127.0.0.1:5432/db_name?serverVersion=13&amp;charset=utf8"/>
+        <!-- ###- doctrine/doctrine-bundle ### -->
+
+        <!-- ###+ lexik/jwt-authentication-bundle ### -->
+        <env name="JWT_SECRET_KEY" value="%kernel.project_dir%/config/jwt/private.pem"/>
+        <env name="JWT_PUBLIC_KEY" value="%kernel.project_dir%/config/jwt/public.pem"/>
+        <env name="JWT_PASSPHRASE" value="5e3b0c123bd6e0207971e6d8155d077f"/>
+        <!-- ###- lexik/jwt-authentication-bundle ### -->
+
+        <!-- ###+ nelmio/cors-bundle ### -->
+        <env name="CORS_ALLOW_ORIGIN" value="'^https?://(localhost|127\.0\.0\.1)(:[0-9]+)?$'"/>
+        <!-- ###- nelmio/cors-bundle ### -->
     </php>
 
     <testsuites>

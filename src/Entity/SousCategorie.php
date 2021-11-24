@@ -51,11 +51,11 @@ class SousCategorie
     private $assocs;
 
     /**
-     * @ORM\Column(type="integer", options={"default"="999", "unsigned"=true}, nullable=true)
+     * @ORM\Column(type="integer", options={"default":"999", "unsigned"=true}, nullable=true)
      *
      * @Groups({"categorie:read", "ville:read"})
      */
-    private $ordre;
+    private $ordre = 999;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)

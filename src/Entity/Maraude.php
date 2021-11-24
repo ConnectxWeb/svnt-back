@@ -10,8 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * Maraude
- *
  * @ApiResource(
  *     attributes={
  *      "force_eager"=false,

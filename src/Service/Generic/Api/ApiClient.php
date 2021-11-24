@@ -26,7 +26,9 @@
 namespace App\Service\Generic\Api;
 
 
-use Symfony\Component\HttpClient\HttpClient; //symfony >= 4.3 -  composer require symfony/http-client
+use Symfony\Component\HttpClient\HttpClient;
+
+//symfony >= 4.3 -  composer require symfony/http-client
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
@@ -64,9 +66,7 @@ class ApiClient
 
         try {
             $result = $response->toArray();
-        } catch (ClientExceptionInterface $e) {
-            return false;
-        } catch (DecodingExceptionInterface $e) {
+        } catch (ClientExceptionInterface | DecodingExceptionInterface $e) {
             return false;
         } catch (RedirectionExceptionInterface $e) {
             return false;
