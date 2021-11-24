@@ -61,7 +61,7 @@ class CategorieCrudController extends AbstractCrudController
                 ->setFormType(FileUploadType::class)
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
                 ->setRequired(false),
-            IntegerField::new('ordre', '(Défaut 999, 0,1,2,3.. en premier)'),
+            IntegerField::new('ordre', '(Défaut 999, 1,2,3.. en premier)'),
         ];
     }
 

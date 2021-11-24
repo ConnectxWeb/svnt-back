@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
@@ -56,6 +57,7 @@ class Categorie
     private $sousCategories;
 
     /**
+     * @Assert\GreaterThan(0)
      * @ORM\Column(type="integer", options={"default":"999", "unsigned"=true}, nullable=true)
      * @Groups({"categorie:read", "ville:read"})
      */
