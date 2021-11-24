@@ -73,6 +73,7 @@ class GpxCrudController extends AbstractCrudController
                 ->setRequired(false),
             ColorField::new('traceColor',
                 'Couleur du tracé (utilisé uniquement pour les tracés, lignes de métro, tram..)')
+                ->onlyOnForms()
         ];
     }
 

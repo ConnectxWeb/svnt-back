@@ -17,7 +17,7 @@ echo "Cleaning cache and logs"
 rm -rf var/cache/* var/logs/*
 
 echo "Composer install + clear cache"
-php composer.phar install --no-interaction --optimize-autoloader
+php composer.phar install --no-dev --no-interaction --optimize-autoloader
 php bin/console cache:clear --no-warmup
 php bin/console cache:warmup
 
