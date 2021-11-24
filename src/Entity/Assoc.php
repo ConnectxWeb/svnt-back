@@ -25,7 +25,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     }
  * )
  * @ApiFilter(SearchFilter::class, properties={"nom": "exact"})
- * @ApiFilter(BooleanFilter::class, properties={"chien", "handicap"})
+ * @ApiFilter(BooleanFilter::class, properties={"animauxAuthorises", "accesPmr"})
  *
  * @ORM\Table(name="assoc", indexes={@ORM\Index(name="fk_assoc_ville", columns={"ville_id"})})
  * @ORM\Entity(repositoryClass="App\Repository\AssocRepository")
@@ -92,30 +92,45 @@ class Assoc
 
     /**
      * @var string|null
-     *
      * @ORM\Column(name="latitude", type="string", length=32, nullable=true)
-     *
      * @Groups({"assoc:read", "ville:read"})
      */
     private $latitude;
 
     /**
      * @var bool|null
-     *
-     * @ORM\Column(name="chien", type="boolean", nullable=true)
-     *
+     * @ORM\Column(type="boolean", nullable=true)
      * @Groups({"assoc:read", "ville:read"})
      */
-    private $chien;
+    private $animauxAuthorises = false;
 
     /**
      * @var bool|null
-     *
-     * @ORM\Column(name="handicap", type="boolean", nullable=true)
-     *
+     * @ORM\Column(type="boolean", nullable=true)
      * @Groups({"assoc:read", "ville:read"})
      */
-    private $handicap;
+    private $accesPmr = false;
+
+    /**
+     * @var bool|null
+     * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"assoc:read", "ville:read"})
+     */
+    private $sourdMalentendant = false;
+
+    /**
+     * @var bool|null
+     * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"assoc:read", "ville:read"})
+     */
+    private $malVoyant = false;
+
+    /**
+     * @var bool|null
+     * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"assoc:read", "ville:read"})
+     */
+    private $femmeUniquement = false;
 
     /**
      * @ORM\ManyToOne(targetEntity="Ville", inversedBy="assocs", cascade={"persist"})
@@ -282,26 +297,26 @@ class Assoc
         return $this;
     }
 
-    public function getChien(): ?bool
+    public function getAnimauxAuthorises(): ?bool
     {
-        return $this->chien;
+        return $this->animauxAuthorises;
     }
 
-    public function setChien(?bool $chien): self
+    public function setAnimauxAuthorises(?bool $animauxAuthorises): self
     {
-        $this->chien = $chien;
+        $this->animauxAuthorises = $animauxAuthorises;
 
         return $this;
     }
 
-    public function getHandicap(): ?bool
+    public function getAccesPmr(): ?bool
     {
-        return $this->handicap;
+        return $this->accesPmr;
     }
 
-    public function setHandicap(?bool $handicap): self
+    public function setAccesPmr(?bool $accesPmr): self
     {
-        $this->handicap = $handicap;
+        $this->accesPmr = $accesPmr;
 
         return $this;
     }
@@ -467,6 +482,54 @@ class Assoc
     public function setLogoFilename($logoFilename): void
     {
         $this->logoFilename = $logoFilename;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getFemmeUniquement(): ?bool
+    {
+        return $this->femmeUniquement;
+    }
+
+    /**
+     * @param bool|null $femmeUniquement
+     */
+    public function setFemmeUniquement(?bool $femmeUniquement): void
+    {
+        $this->femmeUniquement = $femmeUniquement;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getMalVoyant(): ?bool
+    {
+        return $this->malVoyant;
+    }
+
+    /**
+     * @param bool|null $malVoyant
+     */
+    public function setMalVoyant(?bool $malVoyant): void
+    {
+        $this->malVoyant = $malVoyant;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getSourdMalentendant(): ?bool
+    {
+        return $this->sourdMalentendant;
+    }
+
+    /**
+     * @param bool|null $sourdMalentendant
+     */
+    public function setSourdMalentendant(?bool $sourdMalentendant): void
+    {
+        $this->sourdMalentendant = $sourdMalentendant;
     }
 
 }

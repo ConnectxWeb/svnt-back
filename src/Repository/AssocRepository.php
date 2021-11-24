@@ -54,17 +54,18 @@ class AssocRepository extends ServiceEntityRepository
         return $all[array_rand($all)];
     }
 
-    public function findCustom($villeId, $chien, $handicap)
+    public function findCustom($villeId, $animauxAuthorises, $accesPmr)
     {
         $qb = $this->createQueryBuilder('a');
         if ($villeId !== null) {
             $qb->andWhere('a.ville = :villeId')->setParameter('villeId', $villeId);
         }
-        if ($chien !== null) {
-            $qb->andWhere('a.chien = :chien')->setParameter('chien', $chien);
+        if ($animauxAuthorises !== null) {
+            $qb->andWhere('a.animauxAuthorises = :animauxAuthorises')->setParameter('animauxAuthorises',
+                $animauxAuthorises);
         }
-        if ($handicap !== null) {
-            $qb->andWhere('a.handicap = :handicap')->setParameter('handicap', $handicap);
+        if ($accesPmr !== null) {
+            $qb->andWhere('a.accesPmr = :accesPmr')->setParameter('accesPmr', $accesPmr);
         }
 
         return $qb->getQuery()

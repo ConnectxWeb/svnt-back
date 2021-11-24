@@ -66,9 +66,15 @@ class AssocCrudController extends AbstractCrudController
                 ->setRequired(false)
                 ->setLabel('Sous-catégories')
                 ->setFormTypeOptions(['by_reference' => true]),
-            BooleanField::new('chien')
+            BooleanField::new('animauxAuthorises', 'Animaux autorisés')
                 ->onlyOnForms(),
-            BooleanField::new('handicap')
+            BooleanField::new('accesPmr', 'Accès PMR')
+                ->onlyOnForms(),
+            BooleanField::new('sourdMalentendant', 'Accessible Sourds ou malentendant')
+                ->onlyOnForms(),
+            BooleanField::new('malVoyant', 'Accessibles aux non ou mal voyant')
+                ->onlyOnForms(),
+            BooleanField::new('femmeUniquement', 'Accessible aux femmes uniquement')
                 ->onlyOnForms(),
 
             FormField::addPanel('Horaires'),

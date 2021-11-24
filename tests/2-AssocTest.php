@@ -61,8 +61,8 @@ class AssocTest extends UnitBase
         $assoc->setLongitude($this->faker->longitude);
         $assoc->setLatitude($this->faker->latitude);
 
-        $assoc->setChien($this->faker->boolean);
-        $assoc->setHandicap($this->faker->boolean);
+        $assoc->setAnimauxAuthorises($this->faker->boolean);
+        $assoc->setAccesPmr($this->faker->boolean);
 
         for ($i = 1; $i <= $this->faker->numberBetween(1, 10); $i++) {
             $ouverture = $this->addOuverture();
