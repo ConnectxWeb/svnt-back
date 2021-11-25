@@ -40,13 +40,13 @@ class AnnuaireCategorie
      * @var string|null
      *
      * @ORM\Column(name="nom", type="string", length=128, nullable=false, unique=true)
-     * @Groups({"annuaireCategorie:read"})
+     * @Groups({"annuaireCategorie:read", "ville:read"})
      */
     private $nom;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\AnnuaireOrganisme", mappedBy="categorie", orphanRemoval=true)
-     * @Groups({"ville:read"})
+     * @Groups({"annuaireCategorie:read", "ville:read"})
      */
     private $organismes;
 

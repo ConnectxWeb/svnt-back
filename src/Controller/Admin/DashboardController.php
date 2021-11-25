@@ -2,6 +2,8 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\AnnuaireCategorie;
+use App\Entity\AnnuaireOrganisme;
 use App\Entity\Assoc;
 use App\Entity\Categorie;
 use App\Entity\Gpx;
@@ -63,15 +65,21 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Maraude', 'far fa-arrow-alt-circle-right', Maraude::class)
             ->setDefaultSort(['id' => 'DESC']);
 
-        yield MenuItem::section('Admin');
+        yield MenuItem::section('Configuration');
+        yield MenuItem::linkToCrud('GPX', 'fas fa-map-marker', Gpx::class)
+            ->setDefaultSort(['id' => 'ASC']);
         yield MenuItem::linkToCrud('Catégorie', 'fas fa-list', Categorie::class)
             ->setDefaultSort(['ordre' => 'ASC']);
         yield MenuItem::linkToCrud('Sous-catégorie', 'fas fa-list-alt', SousCategorie::class)
             ->setDefaultSort(['ordre' => 'ASC']);
-        yield MenuItem::linkToCrud('GPX', 'fas fa-map-marker', Gpx::class)
-            ->setDefaultSort(['id' => 'ASC']);
         yield MenuItem::linkToCrud('Ville', 'fas fa-city', Ville::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-users', User::class);
+
+        yield MenuItem::section('Annuaire');
+        yield MenuItem::linkToCrud('Catégorie', 'fas fa-list', AnnuaireCategorie::class)
+            ->setDefaultSort(['id' => 'ASC']);
+        yield MenuItem::linkToCrud('Organisme', 'fas fa-list-alt', AnnuaireOrganisme::class)
+            ->setDefaultSort(['id' => 'ASC']);
 
         yield MenuItem::section('API');
         yield MenuItem::linkToUrl('API docs', 'fas fa-server', '/api/docs')
