@@ -39,7 +39,7 @@ class AnnuaireOrganisme
     /**
      * @var string|null
      *
-     * @ORM\Column(name="nom", type="string", length=255, nullable=false, unique=true)
+     * @ORM\Column(name="nom", type="string", length=128, nullable=false, unique=true)
      * @Groups({"annuaireOrganisme:read"})
      */
     private $nom;
