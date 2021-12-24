@@ -165,13 +165,13 @@ class Assoc
     private $ouverture;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Categorie", inversedBy="assocs", cascade={"persist", "remove"})
+     * @ORM\ManyToMany(targetEntity="App\Entity\Categorie", inversedBy="assocs", cascade={"persist"})
      * @ORM\JoinTable(name="assoc_has_category",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="assoc_id", referencedColumnName="id", onDelete="CASCADE")
+     *     @ORM\JoinColumn(name="assoc_id", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="CASCADE")
+     *     @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      *   }
      * )
      *
@@ -180,13 +180,13 @@ class Assoc
     private $categories;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\SousCategorie", inversedBy="assocs", cascade={"persist", "remove"})
+     * @ORM\ManyToMany(targetEntity="App\Entity\SousCategorie", inversedBy="assocs", cascade={"persist"})
      * @ORM\JoinTable(name="assoc_has_sousCategory",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="assoc_id", referencedColumnName="id", onDelete="CASCADE")
+     *     @ORM\JoinColumn(name="assoc_id", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="sousCategory_id", referencedColumnName="id", onDelete="CASCADE")
+     *     @ORM\JoinColumn(name="sousCategory_id", referencedColumnName="id")
      *   }
      * )
      *
