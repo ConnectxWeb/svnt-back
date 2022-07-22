@@ -43,12 +43,12 @@ class GpxCrudController extends AbstractCrudController
         return Gpx::class;
     }
 
-    public function configureCrud(Crud $crud): Crud
+    /* public function configureCrud(Crud $crud): Crud
     {
         return $crud
             ->showEntityActionsInlined()
             ->setEntityLabelInPlural('GPX (une fois le fichier importé, il doit être validé en cliquant sur le bouton "Valider GPX")');
-    }
+    } */
 
     public function configureFields(string $pageName): iterable
     {
@@ -76,7 +76,7 @@ class GpxCrudController extends AbstractCrudController
         ];
     }
 
-    public function configureActions(Actions $actions): Actions
+    /* public function configureActions(Actions $actions): Actions
     {
         $validateGpx = Action::new('validateGpx', 'Valider GPX', 'fa fa-check')
             ->linkToCrudAction('validateGpx')
@@ -93,13 +93,13 @@ class GpxCrudController extends AbstractCrudController
 
     public function validateGpx(AdminUrlGenerator $adminUrlGenerator, Request $request): Response
     {
-        /** @var Gpx $gpx */
+        /** @var Gpx $gpx *
         $gpx = $this->getContext()->getEntity()->getInstance();
         if (!$gpx instanceof Gpx) {
             throw new \RuntimeException('Objet non GPX.');
         }
 
-        /** @var Session */
+        /** @var Session *
         $session = $this->getContext()->getRequest()->getSession();
         $adminUrlGenerator->setController(self::class)
             ->setAction('index')
@@ -127,5 +127,5 @@ class GpxCrudController extends AbstractCrudController
         }
 
         return $this->redirect($adminUrlGenerator->generateUrl());
-    }
+    } */
 }
